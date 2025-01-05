@@ -559,6 +559,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -566,9 +567,9 @@ scale = Vector2(1.00482, 1.00997)
 shape = SubResource("CircleShape2D_ojesv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.92773, 2.49963)
 sprite_frames = SubResource("SpriteFrames_8dcpb")
 animation = &"shootWalkLeft"
 frame_progress = 0.690069
