@@ -7134,4 +7134,5 @@ tile_set = SubResource("TileSet_nb4dx")
 tile_set = SubResource("TileSet_c18mn")
 
 [node name="Player" parent="." instance=ExtResource("29_da5vg")]
-position = Vector2(-1266, -127)
+position = Vector2(-575, -91)
+scale = Vector2(0.898019, 0.898019)
