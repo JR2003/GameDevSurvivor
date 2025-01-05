@@ -19,7 +19,7 @@ func handle_input():
 
 	if axis != Vector2.ZERO:
 		last_direction = axis.normalized()  # Letzte Richtung speichern
-		velocity = axis * 300  # Geschwindigkeit (anpassen nach Bedarf)
+		velocity = axis * 150 # Geschwindigkeit (anpassen nach Bedarf)
 	else:
 		velocity = Vector2.ZERO
 
@@ -30,9 +30,15 @@ func handle_input():
 
 func update_animation():
 	if is_shooting:
-		play_shoot_animation()
+		if velocity == Vector2.ZERO:
+			play_still_shoot_animation()
+		else:
+			play_shoot_animation()
 	else:
-		play_walk_animation()
+		if velocity == Vector2.ZERO:
+			anim.play("idle")
+		else:
+			play_walk_animation()
 
 func play_shoot_animation():
 	if last_direction.x < 0:
@@ -68,3 +74,5 @@ func play_walk_animation():
 		anim.play("walkUp")
 	elif velocity.y > 0:
 		anim.play("walkDown")
+	if velocity.x == 0 and velocity.y == 0:
+		anim.stop()
