@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cm5dk02byi7t5"]
+[gd_scene load_steps=26 format=3 uid="uid://cm5dk02byi7t5"]
 
 [ext_resource type="Texture2D" uid="uid://c8ruscvd7lcrr" path="res://Slime/slime-Sheet.png" id="1_a2up0"]
 
@@ -180,15 +180,23 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lx417"]
 radius = 85.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q718u"]
+radius = 8.0
+
 [node name="enemySlime" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_atsh6")
 animation = &"idle"
-frame_progress = 0.652056
-offset = Vector2(0, -11)
+frame_progress = 0.360538
+offset = Vector2(-1, -12)
 
 [node name="detection_range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_range"]
+position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_lx417")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_q718u")
