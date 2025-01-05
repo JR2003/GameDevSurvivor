@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=90 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://d0a88flubus6o" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Run/Unarmed_Run_full.png" id="2_ep5m8"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://oo82dv2h6d50" path="res://Unarmed_Idle_full (4).png" id="3_vd8gv"]
 [ext_resource type="Texture2D" uid="uid://bk4wpdb0es4ia" path="res://Unarmed_Idle_full (5).png" id="4_hctfx"]
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
+[ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
+[ext_resource type="Texture2D" uid="uid://lx1si0k5snv" path="res://Unarmed_Run_full (3).png" id="8_kbruq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
 radius = 66.4133
@@ -558,6 +560,70 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4pqw"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgvfa"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vx8m"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yno4l"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7w1p"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox00j"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euqr3"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2edy"]
+atlas = ExtResource("8_kbruq")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anygk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4pqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgvfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vx8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yno4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7w1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox00j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euqr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2edy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
@@ -573,3 +639,16 @@ scale = Vector2(2.92773, 2.49963)
 sprite_frames = SubResource("SpriteFrames_8dcpb")
 animation = &"shootWalkLeft"
 frame_progress = 0.690069
+
+[node name="Weapon2" type="Node2D" parent="."]
+position = Vector2(-220.5, 2)
+script = ExtResource("7_m6jkk")
+weapon_distance = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
+position = Vector2(354.5, 139.5)
+rotation = 1.56078
+scale = Vector2(-2.64759, -2.84685)
+sprite_frames = SubResource("SpriteFrames_anygk")
+frame_progress = 0.803323
+offset = Vector2(150, 0)
