@@ -650,7 +650,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = ExtResource("7_vofxv")
 weapon_distance = -20
-shoot_cd = 3.0
+shoot_cd = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
