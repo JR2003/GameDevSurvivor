@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4wpdb0es4ia" path="res://Unarmed_Idle_full (5).png" id="4_hctfx"]
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
-[ext_resource type="PackedScene" path="res://Arrow.tscn" id="7_vofxv"]
+[ext_resource type="PackedScene" uid="uid://bp1e7o66x1top" path="res://Arrow.tscn" id="7_vofxv"]
 [ext_resource type="Texture2D" uid="uid://lx1si0k5snv" path="res://Unarmed_Run_full (3).png" id="8_kbruq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
@@ -650,7 +650,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = ExtResource("7_vofxv")
 weapon_distance = -20
-shoot_cd = 5.0
+shoot_cd = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
