@@ -22,21 +22,26 @@ func shoot_arrow(direction: Vector2):
 	arrow_instance.rotation = direction.angle() - deg_to_rad(70)
 	arrow_instance.direction = direction.normalized()
 
+func upgrade():
+	shoot_cd -= 0.5
+	print("upgraded: ", shoot_cd)
+
 func _process(delta):
 	# Spielerposition als Rotationszentrum
 	var player_position = player.global_position
 	var mouse_position = get_global_mouse_position()
-
+	
 	# Richtung zur Maus berechnen
 	var direction = (mouse_position - player_position).normalized()
-
+	if Input.is_action_just_pressed("upgrade"):
+		upgrade()
 	# Position der Waffe relativ zum Spieler setzen
 	global_position = player_position + direction * weapon_distance
 
 	# Rotation zur Maus setzen
 	global_rotation = direction.angle()
 	
-	print("Ladezeit ", shoot_time)
+	
 	# Schusslogik
 	
 	if Input.is_action_pressed("shoot"):
