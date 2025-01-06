@@ -631,7 +631,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.00482, 1.00997)
+scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -648,7 +648,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = ExtResource("7_vofxv")
 weapon_distance = -20
-shoot_cd = 0.5
+shoot_cd = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)

@@ -5,7 +5,7 @@ extends Node2D  # Weapon2 sollte ein Node2D sein
 @export var arrow_scene: PackedScene  # Verweis auf die Arrow.tscn
 @onready var weapon = $Weapon2  # oder ein relativer Pfad # Node, von dem der Pfeil gespawnt wird
 @export var weapon_distance = 20  # Abstand der Waffe vom Spielerzentrum
-@export var shoot_offset: Vector2 = Vector2(70, 20)
+@export var shoot_offset: Vector2 = Vector2(75, 40)
 @onready var bow_timer = $Timer
 var is_drawing_bow = false  # Zustand: Bogen wird gespannt
 var shoot_time = 0.0
@@ -13,7 +13,7 @@ var shoot_time = 0.0
 func shoot_arrow(direction: Vector2):
 	# Pfeil instanziieren
 	var arrow_instance = arrow_scene.instantiate()
-	get_parent().add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
+	get_tree().root.add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
 
 	# Pfeilposition und Richtung setzen
 	var shoot_position = global_position + shoot_offset.rotated(global_rotation)
