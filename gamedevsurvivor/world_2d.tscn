@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://bsx4rlo3nax4t"]
+[gd_scene load_steps=110 format=4 uid="uid://dysrj4jcqurfy"]
 
 [ext_resource type="Texture2D" uid="uid://cjkq3wtaxkupp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="1_uxg8h"]
 [ext_resource type="Texture2D" uid="uid://m3p2gnbui2pp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_hdhnq"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cms6rt4vp1n4n" path="res://assets/Tiny Swords (Update 010)/Deco/06.png" id="20_86mn2"]
 [ext_resource type="Texture2D" uid="uid://cpyvyy4tfc8c2" path="res://assets/Tiny Swords (Update 010)/Deco/14.png" id="20_ecs8h"]
 [ext_resource type="PackedScene" uid="uid://ca8kwl2i7kgxr" path="res://Player/player.tscn" id="29_da5vg"]
+[ext_resource type="PackedScene" uid="uid://cm5dk02byi7t5" path="res://Enemy/enemy_slime.tscn" id="30_f8r7v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imxk5"]
 texture = ExtResource("1_uxg8h")
@@ -7136,3 +7137,6 @@ tile_set = SubResource("TileSet_c18mn")
 [node name="Player" parent="." instance=ExtResource("29_da5vg")]
 position = Vector2(-575, -91)
 scale = Vector2(0.898019, 0.898019)
+
+[node name="enemySlime" parent="." instance=ExtResource("30_f8r7v")]
+position = Vector2(-655, -436)
