@@ -4,6 +4,8 @@ var chase = false
 var player = null
 var speed = 60
 
+# ben war hier
+
 func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
 	player = body
 	chase = true
