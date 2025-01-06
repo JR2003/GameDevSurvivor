@@ -30,8 +30,7 @@ func _physics_process(delta: float) -> void:
 		
 
 
-func _on_damage_hitbox_body_entered(body: Node2D) -> void:
-	
+func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	health -= 10
 	print(health)
 	print("mich hat etwas gehittet!!!")
