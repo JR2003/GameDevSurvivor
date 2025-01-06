@@ -22,11 +22,10 @@ func handle_input():
 		velocity = Vector2.ZERO
 
 	# Richtung zur Maus aktualisieren
+	
 	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	last_direction = mouse_direction
-
-	# Schießen-Status
-	is_shooting = Input.is_action_pressed("shoot")
+		
 
 func update_animation():
 		if velocity == Vector2.ZERO:

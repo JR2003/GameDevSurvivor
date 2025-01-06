@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2jh23e6x3d05"
-path="res://.godot/imported/Unarmed_Idle_full (3).png-bbfc873ad5858fbedc54f323fe4636a3.ctex"
+path="res://.godot/imported/BowAnim.png-bdfaa70fe4f50f6a2b85a2052d756b3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Unarmed_Idle_full (3).png"
-dest_files=["res://.godot/imported/Unarmed_Idle_full (3).png-bbfc873ad5858fbedc54f323fe4636a3.ctex"]
+source_file="res://BowAnim.png"
+dest_files=["res://.godot/imported/BowAnim.png-bdfaa70fe4f50f6a2b85a2052d756b3d.ctex"]
 
 [params]
 
