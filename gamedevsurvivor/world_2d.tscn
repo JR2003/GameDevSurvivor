@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cpyvyy4tfc8c2" path="res://assets/Tiny Swords (Update 010)/Deco/14.png" id="20_ecs8h"]
 [ext_resource type="Texture2D" uid="uid://crljkcnocd3p" path="res://assets/Tiny Swords (Update 010)/Deco/04.png" id="23_qyuui"]
 [ext_resource type="PackedScene" uid="uid://ca8kwl2i7kgxr" path="res://Player/player.tscn" id="29_8gnmi"]
-[ext_resource type="PackedScene" uid="uid://cm5dk02byi7t5" path="res://Enemy/enemy_slime.tscn" id="30_f8r7v"]
+[ext_resource type="PackedScene" uid="uid://d1x1c2hlvcbdn" path="res://Enemy/enemy_slime.tscn" id="30_f8r7v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ebhn"]
 texture = ExtResource("1_uxg8h")
