@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=91 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://d0a88flubus6o" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Run/Unarmed_Run_full.png" id="2_ep5m8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4wpdb0es4ia" path="res://Unarmed_Idle_full (5).png" id="4_hctfx"]
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
+[ext_resource type="PackedScene" uid="uid://bp1e7o66x1top" path="res://Arrow.tscn" id="7_vofxv"]
 [ext_resource type="Texture2D" uid="uid://lx1si0k5snv" path="res://Unarmed_Run_full (3).png" id="8_kbruq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
@@ -625,11 +626,12 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(11, -28)
 scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.00482, 1.00997)
+scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -639,16 +641,24 @@ scale = Vector2(2.92773, 2.49963)
 sprite_frames = SubResource("SpriteFrames_8dcpb")
 animation = &"shootWalkLeft"
 frame_progress = 0.690069
+speed_scale = 1.5
 
 [node name="Weapon2" type="Node2D" parent="."]
-position = Vector2(-220.5, 2)
+position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
-weapon_distance = 10
+arrow_scene = ExtResource("7_vofxv")
+weapon_distance = -20
+shoot_cd = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
 rotation = 1.56078
 scale = Vector2(-2.64759, -2.84685)
 sprite_frames = SubResource("SpriteFrames_anygk")
-frame_progress = 0.803323
+frame_progress = 0.231583
+speed_scale = 3.0
 offset = Vector2(150, 0)
+
+[node name="Timer" type="Timer" parent="Weapon2"]
+wait_time = 2.0
+one_shot = true
