@@ -114,6 +114,6 @@ func die():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemies") or area.is_in_group("skeleton"):
+	if area.is_in_group("enemies"):
 		get_damage(1)
 		getting_damage = true
