@@ -195,8 +195,8 @@ script = ExtResource("1_skfmo")
 position = Vector2(10.0938, -0.23)
 scale = Vector2(1.59375, 1.46)
 sprite_frames = SubResource("SpriteFrames_atsh6")
-animation = &"move"
-frame_progress = 0.614848
+animation = &"death"
+frame_progress = 0.155407
 offset = Vector2(-5, -12)
 
 [node name="detection_range" type="Area2D" parent="."]

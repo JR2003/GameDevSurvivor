@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp1e7o66x1top"]
+[gd_scene load_steps=4 format=3 uid="uid://dbp22wt8dg2i5"]
 
 [ext_resource type="Script" path="res://Arrow.gd" id="1_ja2bx"]
 [ext_resource type="Texture2D" uid="uid://ddjowo4dpu3by" path="res://New Piskel.png" id="2_ylbby"]
@@ -29,3 +29,5 @@ scale = Vector2(0.855287, 0.815269)
 shape = SubResource("RectangleShape2D_ufiep")
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -10,8 +10,6 @@ func _physics_process(delta):
 	# Rotation des Pfeils anpassen (soll mit Flugrichtung übereinstimmen)
 	rotation = direction.angle()
 
-func _on_Area2D_body_entered(body):
-	# Logik bei Treffer (z. B. Schaden zufügen)
-	if body.is_in_group("enemies"):
-		body.take_damage(10)  # Beispiel: 10 Schaden zufügen
-	queue_free()  # Pfeil entfernen
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	queue_free()

@@ -27,7 +27,7 @@ func upgrade():
 	print("upgraded: ", shoot_cd)
 
 func _process(delta):
-	# Spielerposition als Rotationszentrum
+	# Spielerposition als Rotationszent
 	var player_position = player.global_position
 	var mouse_position = get_global_mouse_position()
 	
