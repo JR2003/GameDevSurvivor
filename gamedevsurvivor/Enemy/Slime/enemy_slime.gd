@@ -53,7 +53,7 @@ func give_exp_to_player() -> void:
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	
 	
-	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
+	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player"):
 		health -= 10
 		hurt = true
 		print("hit")
