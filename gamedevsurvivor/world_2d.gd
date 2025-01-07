@@ -23,7 +23,7 @@ func spawn_enemy():
 		randf_range(-1000, 1000),
 		randf_range(0,500)
 	)
-	print(spawn_position)
+	
 	
 	enemy_instance.position = spawn_position
 

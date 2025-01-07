@@ -55,10 +55,10 @@ func give_exp_to_player() -> void:
 		player.gain_exp(exp_reward)
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
-	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
+	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player") and !area.is_in_group("enemies"):
 		health -= 10
 		hurt = true
-		print("hit")
+		print(area.get_groups())
 		$AnimatedSprite2D.play("hurt")
 		await $AnimatedSprite2D.animation_looped
 		

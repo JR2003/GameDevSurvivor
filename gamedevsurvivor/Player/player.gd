@@ -104,7 +104,8 @@ func get_damage(amount: int):
 		die()
 	
 func die():
-	await update_animation()
+	
+	update_animation()
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 	
 	
