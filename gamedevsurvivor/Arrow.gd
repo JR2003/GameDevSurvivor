@@ -2,7 +2,8 @@ extends Node2D
 
 @export var speed: float = 500.0  # Geschwindigkeit des Pfeils
 var direction = Vector2.ZERO  # Richtung, in die der Pfeil fliegt
-
+func _ready():
+	add_to_group("player_projectiles")
 func _physics_process(delta):
 	# Bewegung des Pfeils
 	position += direction * speed * delta
@@ -12,4 +13,5 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	queue_free()
+	if body.is_in_group("enemies"):
+		queue_free()
