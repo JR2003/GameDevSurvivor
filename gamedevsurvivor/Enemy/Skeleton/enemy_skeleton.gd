@@ -17,7 +17,8 @@ func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
 
 
 func _on_detection_range_body_exited(body: Node2D) -> void:
-	chase = false
+	if body == player:
+		chase = false
 
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:

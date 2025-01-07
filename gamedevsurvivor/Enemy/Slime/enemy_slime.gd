@@ -18,8 +18,8 @@ func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
 		chase = true
 
 func _on_detection_range_body_exited(body: CharacterBody2D) -> void:
-	
-	chase = false
+	if body == player:
+		chase = false
 
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:

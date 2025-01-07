@@ -356,6 +356,8 @@ radius = 20.0
 radius = 20.025
 
 [node name="EnemySkeleton" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_v0yd7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -368,15 +370,15 @@ frame_progress = 0.773955
 
 [node name="detection_range" type="Area2D" parent="." groups=["skeleton_hitbox"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_range"]
 position = Vector2(15, -16)
 shape = SubResource("CircleShape2D_67r67")
 
 [node name="damage_hitbox" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox"]
 position = Vector2(15, -16)
