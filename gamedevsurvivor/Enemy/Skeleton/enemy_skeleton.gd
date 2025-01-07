@@ -5,7 +5,7 @@ var speed = 50
 var chase = false
 var health = 150
 var alive = true
-# var exp_reward = xx
+var exp_reward = 75
 var hurt = false
 
 func _ready() -> void:
@@ -47,9 +47,17 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 
 func die():
-	# give_exp_to_player()
+	give_exp_to_player()
 	alive = false
 	$AnimatedSprite2D.play("death")
 	await $AnimatedSprite2D.animation_looped
 	
 	queue_free()
+	
+func give_exp_to_player() -> void:
+	if player == null:
+		print("player nicht da")
+	elif !player.has_method("gain_exp"):
+		print("method nicht geunden")
+	if player and player.has_method("gain_exp"):
+		player.gain_exp(exp_reward)
