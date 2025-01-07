@@ -12,7 +12,7 @@ func _ready() -> void:
 	player = get_parent().get_node("Player")
 	print("neues skelett gespawnt")
 
-
+# deleted double scenes
 
 func get_damage(amount: int):
 	health -= amount
