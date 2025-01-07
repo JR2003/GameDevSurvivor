@@ -350,10 +350,10 @@ animations = [{
 radius = 339.147
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bt0ir"]
-radius = 20.0
+radius = 32.0156
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16f51"]
-radius = 20.025
+radius = 32.0156
 
 [node name="EnemySkeleton" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -376,15 +376,15 @@ collision_mask = 7
 position = Vector2(15, -16)
 shape = SubResource("CircleShape2D_67r67")
 
-[node name="damage_hitbox" type="Area2D" parent="."]
+[node name="damage_hitbox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 4
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox" groups=["enemies"]]
 position = Vector2(15, -16)
 shape = SubResource("CircleShape2D_bt0ir")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(15, -17)
 shape = SubResource("CircleShape2D_16f51")
 
