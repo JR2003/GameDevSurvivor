@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var chase = false
+var chase = true
 var player = null
 var speed = 50
 var health = 100
@@ -11,15 +11,7 @@ var hurt = false
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 	
-		
-
-func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
-	if body == player:
-		chase = true
-
-func _on_detection_range_body_exited(body: CharacterBody2D) -> void:
-	if body == player:
-		chase = false
+	
 
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:

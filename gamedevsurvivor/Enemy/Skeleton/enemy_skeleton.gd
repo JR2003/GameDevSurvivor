@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var player = null
 var speed = 50
-var chase = false
+var chase = true
 var health = 150
 var alive = true
 var exp_reward = 75
@@ -10,16 +10,6 @@ var hurt = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
-
-func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
-	if body == player:
-		chase = true
-
-
-func _on_detection_range_body_exited(body: Node2D) -> void:
-	if body == player:
-		chase = false
-
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player"):

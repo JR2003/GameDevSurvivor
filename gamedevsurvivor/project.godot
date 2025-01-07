@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 player_projectiles=""
 enemies=""
+slime=""
+skeleton=""
+player_hb=""
+enemy_hitbox=""
 
 [input]
 

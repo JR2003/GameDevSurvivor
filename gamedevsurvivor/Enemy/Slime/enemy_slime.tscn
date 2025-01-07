@@ -215,13 +215,13 @@ scale = Vector2(0.779629, 0.720926)
 shape = SubResource("CircleShape2D_q718u")
 disabled = true
 
-[node name="damage_hitbox" type="Area2D" parent="." groups=["enemies", "slime"]]
+[node name="damage_hitbox" type="Area2D" parent="." groups=["enemies", "enemy_hitbox", "slime"]]
 position = Vector2(0, -9)
 scale = Vector2(2.43927, 1.27392)
-collision_layer = 4
+collision_layer = 12
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox" groups=["enemies", "slime"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox" groups=["enemies", "enemy_hitbox", "slime"]]
 scale = Vector2(0.977473, 1.17966)
 shape = SubResource("CircleShape2D_lb3rl")
 
