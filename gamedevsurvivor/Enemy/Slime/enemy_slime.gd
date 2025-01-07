@@ -30,6 +30,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.play("idle")
 
+func get_damage(amount: int):
+	health -= amount
+	if health <= 0:
+		die()
+
 func die():
 	give_exp_to_player()
 	alive = false
