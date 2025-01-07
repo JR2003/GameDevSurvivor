@@ -24,6 +24,7 @@ func spawn_enemy():
 		randf_range(0,500)
 	)
 	print(spawn_position)
+	
 	enemy_instance.position = spawn_position
 
 	# Gegner in die Szene hinzufügen

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddxnllio0s58n"]
+[gd_scene load_steps=27 format=3 uid="uid://ddxnllio0s58n"]
 
 [ext_resource type="Texture2D" uid="uid://c8ruscvd7lcrr" path="res://Slime/slime-Sheet.png" id="1_a2up0"]
 [ext_resource type="Script" path="res://Enemy/enemy_slime.gd" id="1_skfmo"]
@@ -178,9 +178,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lx417"]
-radius = 110.073
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_q718u"]
 radius = 17.4598
 
@@ -198,17 +195,6 @@ sprite_frames = SubResource("SpriteFrames_atsh6")
 animation = &"hurt"
 offset = Vector2(-5, -12)
 
-[node name="detection_range" type="Area2D" parent="." groups=["slime_hitbox"]]
-scale = Vector2(5.40244, 4.42667)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_range"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-1, -5)
-shape = SubResource("CircleShape2D_lx417")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(2, -9)
 scale = Vector2(0.779629, 0.720926)
@@ -225,8 +211,5 @@ collision_mask = 255
 scale = Vector2(0.977473, 1.17966)
 shape = SubResource("CircleShape2D_lb3rl")
 
-[connection signal="area_entered" from="detection_range" to="." method="_on_detection_range_area_entered"]
-[connection signal="body_entered" from="detection_range" to="." method="_on_detection_range_body_entered"]
-[connection signal="body_exited" from="detection_range" to="." method="_on_detection_range_body_exited"]
 [connection signal="area_entered" from="damage_hitbox" to="." method="_on_damage_hitbox_area_entered"]
 [connection signal="body_entered" from="damage_hitbox" to="." method="_on_damage_hitbox_body_entered"]
