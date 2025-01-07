@@ -50,17 +50,3 @@ func give_exp_to_player() -> void:
 		print("method nicht geunden")
 	if player and player.has_method("gain_exp"):
 		player.gain_exp(exp_reward)
-
-func _on_damage_hitbox_area_entered(area: Area2D) -> void:
-	
-	
-	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
-		health -= 10
-		hurt = true
-		print(area.get_groups())
-		$AnimatedSprite2D.play("hurt")
-		await $AnimatedSprite2D.animation_looped
-		
-		hurt = false
-		if health <= 0:
-			die()
