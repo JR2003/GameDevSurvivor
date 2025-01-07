@@ -2,15 +2,16 @@ extends CharacterBody2D
 
 var chase = false
 var player = null
-var speed = 60
+var speed = 50
 var health = 100
 var alive = true
 var exp_reward = 100  # EXP, die dieser Gegner gibt
+var hurt = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
-	if player:
-		print("player gefunden")
+	
+		
 
 func _on_detection_range_body_entered(body: CharacterBody2D) -> void:
 	if body == player:
@@ -21,7 +22,7 @@ func _on_detection_range_body_exited(body: CharacterBody2D) -> void:
 	chase = false
 
 func _physics_process(delta: float) -> void:
-	if !alive:
+	if !alive or hurt:
 		return
 	if chase:
 		position += (player.position - position) / speed
@@ -52,9 +53,13 @@ func give_exp_to_player() -> void:
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	
 	
-	if !area.is_in_group("slime_hitbox"):
-		
+	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
 		health -= 10
-		print(health)
+		hurt = true
+		print("hit")
+		$AnimatedSprite2D.play("hurt")
+		await $AnimatedSprite2D.animation_looped
+		
+		hurt = false
 		if health <= 0:
 			die()

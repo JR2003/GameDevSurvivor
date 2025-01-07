@@ -1,6 +1,7 @@
-[gd_scene load_steps=96 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=108 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
+[ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
 [ext_resource type="Texture2D" uid="uid://d0a88flubus6o" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Run/Unarmed_Run_full.png" id="2_ep5m8"]
 [ext_resource type="Texture2D" uid="uid://eoi4edm16jsc" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Idle/Unarmed_Idle_full.png" id="2_o3ld2"]
 [ext_resource type="Texture2D" uid="uid://oo82dv2h6d50" path="res://Unarmed_Idle_full (4).png" id="3_vd8gv"]
@@ -10,9 +11,39 @@
 [ext_resource type="Texture2D" uid="uid://lx1si0k5snv" path="res://Unarmed_Run_full (3).png" id="8_kbruq"]
 [ext_resource type="Script" path="res://Arrow.gd" id="8_xe7np"]
 [ext_resource type="Texture2D" uid="uid://ddjowo4dpu3by" path="res://New Piskel.png" id="9_odmlt"]
+[ext_resource type="AudioStream" uid="uid://d1on4frr3lskk" path="res://ArrowShot.mp3" id="12_ijwil"]
+[ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
-radius = 66.4133
+radius = 39.9172
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ffn"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(0, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b07gs"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(63, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn4si"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(126, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbjik"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(189, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2asr3"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(252, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b006"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(315, 0, 63, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tknk"]
+atlas = ExtResource("2_7p5xf")
+region = Rect2(378, 0, 63, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50nfu"]
 atlas = ExtResource("2_o3ld2")
@@ -296,6 +327,32 @@ region = Rect2(448, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8dcpb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ffn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b07gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn4si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbjik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2asr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b006")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tknk")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_50nfu")
@@ -655,7 +712,13 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_yxw2h"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uh335"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -28)
 scale = Vector2(2, 2)
 collision_layer = 3
@@ -671,8 +734,7 @@ shape = SubResource("CircleShape2D_ojesv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.92773, 2.49963)
 sprite_frames = SubResource("SpriteFrames_8dcpb")
-animation = &"shootWalkLeft"
-frame_progress = 0.690069
+animation = &"die"
 speed_scale = 1.5
 
 [node name="Weapon2" type="Node2D" parent="."]
@@ -695,6 +757,12 @@ offset = Vector2(150, 0)
 wait_time = 2.0
 one_shot = true
 
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="Weapon2"]
+stream = ExtResource("12_ijwil")
+
+[node name="drawSound" type="AudioStreamPlayer2D" parent="Weapon2"]
+stream = ExtResource("13_wrhpx")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -711,10 +779,31 @@ theme_override_styles/background = SubResource("StyleBoxFlat_mdqvi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0spu5")
 show_percentage = false
 
-[node name="Label" type="Label" parent="Control/ProgressBar"]
+[node name="Exp" type="Label" parent="Control/ProgressBar"]
 layout_mode = 0
-offset_left = 137.0
-offset_top = -22.0
-offset_right = 196.0
-offset_bottom = 1.0
+offset_left = 247.0
+offset_top = -23.0
+offset_right = 306.0
 text = "Exp:"
+label_settings = SubResource("LabelSettings_yxw2h")
+
+[node name="Health" type="Label" parent="Control/ProgressBar"]
+layout_mode = 0
+offset_left = 4.5
+offset_top = -24.5
+offset_right = 44.5
+offset_bottom = -1.5
+text = "Health:"
+label_settings = SubResource("LabelSettings_uh335")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 255
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["player"]]
+position = Vector2(0, 11.5)
+scale = Vector2(0.455103, 0.457435)
+shape = SubResource("CircleShape2D_ojesv")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

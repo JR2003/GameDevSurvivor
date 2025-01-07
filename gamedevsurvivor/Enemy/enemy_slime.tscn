@@ -182,7 +182,7 @@ animations = [{
 radius = 110.073
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q718u"]
-radius = 8.0
+radius = 17.4598
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lb3rl"]
 
@@ -195,11 +195,11 @@ script = ExtResource("1_skfmo")
 position = Vector2(10.0938, -0.23)
 scale = Vector2(1.59375, 1.46)
 sprite_frames = SubResource("SpriteFrames_atsh6")
-animation = &"death"
-frame_progress = 0.155407
+animation = &"hurt"
 offset = Vector2(-5, -12)
 
 [node name="detection_range" type="Area2D" parent="." groups=["slime_hitbox"]]
+scale = Vector2(5.40244, 4.42667)
 collision_layer = 2
 collision_mask = 2
 
@@ -209,16 +209,20 @@ visibility_layer = 2
 position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_lx417")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["slime_hitbox"]]
-position = Vector2(0, -6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(2, -9)
+scale = Vector2(0.779629, 0.720926)
 shape = SubResource("CircleShape2D_q718u")
+disabled = true
 
-[node name="damage_hitbox" type="Area2D" parent="."]
-position = Vector2(0, -6)
-collision_layer = 6
-collision_mask = 6
+[node name="damage_hitbox" type="Area2D" parent="." groups=["enemies"]]
+position = Vector2(0, -9)
+scale = Vector2(2.43927, 1.27392)
+collision_layer = 2
+collision_mask = 255
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox" groups=["enemies"]]
+scale = Vector2(0.977473, 1.17966)
 shape = SubResource("CircleShape2D_lb3rl")
 
 [connection signal="area_entered" from="detection_range" to="." method="_on_detection_range_area_entered"]

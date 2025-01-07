@@ -3,22 +3,30 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D  # Sprite-Node
 @onready var xp_bar = $Control/ProgressBar# XP-Bar Referenz (Pfad anpassen)
 @export var is_shooting = false
-@onready var label = $Control/ProgressBar/Label
+@onready var exp_label = $Control/ProgressBar/Exp
+@onready var hp_label = $Control/ProgressBar/Health
+@onready var bow_sound = $Weapon2/ShotSound
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
 var level = 1
 var exp_to_next_level = 100
 var weapon = null
+var health = 3
+var damage_cd = 1.0
+var getting_damage = false
 
 func _ready() -> void:
 	weapon = get_node("Weapon2")
 	update_exp_label()
+	update_hp_label()
+	
 
 func _physics_process(delta):
 	handle_input()
 	move_and_slide()
 	update_animation()
-
+	if getting_damage:
+		damage_cd += delta
 func handle_input():
 	# Bewegungslogik
 	var axis = Vector2(
@@ -36,6 +44,12 @@ func handle_input():
 	last_direction = mouse_direction
 		
 func update_animation():
+	if health <= 0:
+		anim.play("die")
+		await anim.animation_looped
+		
+		
+		
 	if velocity == Vector2.ZERO:
 		anim.play("idle")
 	else:
@@ -77,4 +91,29 @@ func level_up() -> void:
 	xp_bar.value = exp  # Setze die XP-Bar auf den neuen EXP-Wert
 
 func update_exp_label() -> void:
-	label.text = str(exp) + " / " + str(exp_to_next_level)  # Setze den Text im Label
+	exp_label.text = str(exp) + " / " + str(exp_to_next_level)  # Setze den Text im Label
+
+func update_hp_label() -> void:
+	hp_label.text = str(health) + " / " + str(3) 
+func get_damage(amount: int):
+	if damage_cd >= 1:
+		health -= amount
+		damage_cd = 0
+	update_hp_label()  # Setze den Text im Label
+	if health <= 0:
+		die()
+	
+func die():
+	await update_animation()
+	get_tree().change_scene_to_file("res://Menu/menu.tscn")
+	
+	
+	
+
+
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		get_damage(1)
+		getting_damage = true
