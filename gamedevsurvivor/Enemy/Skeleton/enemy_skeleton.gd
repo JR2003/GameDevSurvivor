@@ -22,7 +22,7 @@ func _on_detection_range_body_exited(body: Node2D) -> void:
 
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
-	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
+	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player"):
 		health -= 10
 		hurt = true
 		print("hit")
@@ -32,14 +32,21 @@ func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 		hurt = false
 		if health <= 0:
 			die()
+	
+	if area.is_in_group("player"):
+		print("player ist im skelett")
 
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:
 		return
 	if chase:
-		position += (player.position - position) / speed
+		var direction = (player.position - position).normalized()
+		
+		velocity = direction * speed
+		move_and_slide()
 		$AnimatedSprite2D.play("move")
-		if (player.position.x - position.x) < 0:
+		
+		if player.position.x < position.x:
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false

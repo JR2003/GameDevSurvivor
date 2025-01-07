@@ -25,9 +25,13 @@ func _physics_process(delta: float) -> void:
 	if !alive or hurt:
 		return
 	if chase:
-		position += (player.position - position) / speed
+		var direction = (player.position - position).normalized()
+		
+		velocity = direction * speed
+		move_and_slide()
 		$AnimatedSprite2D.play("move")
-		if (player.position.x - position.x) < 0:
+		
+		if player.position.x < position.x:
 			$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.flip_h = true
@@ -53,7 +57,7 @@ func give_exp_to_player() -> void:
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	
 	
-	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player"):
+	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player"):
 		health -= 10
 		hurt = true
 		print("hit")
