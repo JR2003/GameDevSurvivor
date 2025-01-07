@@ -31,10 +31,16 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 
 func get_damage(amount: int):
+	hurt = true
 	health -= amount
+	
+	$AnimatedSprite2D.play("hurt")
+	await $AnimatedSprite2D.animation_looped
+	hurt = false
 	if health <= 0:
 		die()
-
+	
+	
 func die():
 	give_exp_to_player()
 	alive = false

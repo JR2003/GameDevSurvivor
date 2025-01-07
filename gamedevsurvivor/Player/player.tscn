@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=108 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ddjowo4dpu3by" path="res://New Piskel.png" id="9_odmlt"]
 [ext_resource type="AudioStream" uid="uid://d1on4frr3lskk" path="res://ArrowShot.mp3" id="12_ijwil"]
 [ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
-[ext_resource type="PackedScene" uid="uid://dbp22wt8dg2i5" path="res://Arrow.tscn" id="14_td47x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
 radius = 39.9172
@@ -741,7 +740,6 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = SubResource("PackedScene_k5exa")
 weapon_distance = -20
-shoot_cd = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
@@ -802,8 +800,6 @@ collision_mask = 6
 position = Vector2(0, 11.5)
 scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
-
-[node name="Arrow" parent="." instance=ExtResource("14_td47x")]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

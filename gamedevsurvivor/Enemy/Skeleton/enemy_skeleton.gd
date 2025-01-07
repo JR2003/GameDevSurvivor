@@ -15,10 +15,14 @@ func _ready() -> void:
 # deleted double scenes
 
 func get_damage(amount: int):
-	health -= amount
-	
-	if health <= 0:
-		die()
+	if alive:
+		hurt = true
+		health -= amount
+		$AnimatedSprite2D.play("hurt")
+		await $AnimatedSprite2D.animation_looped
+		hurt = false
+		if health <= 0:
+			die()
 
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:
