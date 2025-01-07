@@ -33,15 +33,16 @@ func _physics_process(delta: float) -> void:
 		return
 	if chase:
 		var direction = (player.position - position).normalized()
-		
 		velocity = direction * speed
+		
 		move_and_slide()
 		$AnimatedSprite2D.play("move")
 		
-		if player.position.x < position.x:
-			$AnimatedSprite2D.flip_h = true
-		else:
-			$AnimatedSprite2D.flip_h = false
+		if abs(player.position.x - position.x) > 5:
+			if player.position.x < position.x:
+				$AnimatedSprite2D.flip_h = true
+			else:
+				$AnimatedSprite2D.flip_h = false
 	else:
 		$AnimatedSprite2D.play("idle")
 
