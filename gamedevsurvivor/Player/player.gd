@@ -11,12 +11,14 @@ var exp = 0
 var level = 1
 var exp_to_next_level = 100
 var weapon = null
+var arrow = null
 var health = 3
 var damage_cd = 1.0
 var getting_damage = false
 
 func _ready() -> void:
 	weapon = get_node("Weapon2")
+	arrow = get_node("Arrow")
 	update_exp_label()
 	update_hp_label()
 	
@@ -81,7 +83,9 @@ func gain_exp(amount: int) -> void:
 		update_exp_label()
 
 func level_up() -> void:
+	
 	weapon.upgrade()
+	
 	level += 1
 	exp -= exp_to_next_level
 	exp_to_next_level *= 1.5

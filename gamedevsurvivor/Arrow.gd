@@ -11,9 +11,12 @@ func _physics_process(delta):
 	# Rotation des Pfeils anpassen (soll mit Flugrichtung übereinstimmen)
 	rotation = direction.angle()
 
+func set_damage(amount: int):
+	damage = amount
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		print("arrow hit enemy")
+		
 		body.get_damage(damage)
 		queue_free()

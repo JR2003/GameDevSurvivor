@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://dkufkk8wiikb7"]
+[gd_scene load_steps=94 format=4 uid="uid://csiimswrgi3kp"]
 
 [ext_resource type="Script" path="res://world_2d.gd" id="1_kntym"]
 [ext_resource type="Texture2D" uid="uid://cjkq3wtaxkupp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="1_uxg8h"]

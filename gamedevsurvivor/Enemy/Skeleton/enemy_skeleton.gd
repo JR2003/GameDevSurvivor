@@ -10,14 +10,13 @@ var hurt = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
-	print("neues skelett gespawnt")
+	
 
 # deleted double scenes
 
 func get_damage(amount: int):
 	health -= amount
-	$AnimatedSprite2D.play("hurt")
-	await $AnimatedSprite2D.animation_looped
+	
 	if health <= 0:
 		die()
 
