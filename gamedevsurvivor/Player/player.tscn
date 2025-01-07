@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=96 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://d0a88flubus6o" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Run/Unarmed_Run_full.png" id="2_ep5m8"]
@@ -642,6 +642,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdqvi"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0spu5"]
+bg_color = Color(0.841127, 0.188478, 0.293056, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(11, -28)
 scale = Vector2(2, 2)
@@ -681,3 +694,27 @@ offset = Vector2(150, 0)
 [node name="Timer" type="Timer" parent="Weapon2"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -161.5
+offset_top = 268.0
+offset_right = 157.5
+offset_bottom = 295.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mdqvi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0spu5")
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/ProgressBar"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = -22.0
+offset_right = 196.0
+offset_bottom = 1.0
+text = "Exp:"
