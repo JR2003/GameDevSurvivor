@@ -87,7 +87,7 @@ func level_up() -> void:
 	weapon.upgrade()
 	
 	level += 1
-	exp -= exp_to_next_level
+	exp = 0
 	exp_to_next_level *= 1.5
 	print("Level-Up! Neues Level: ", level)
 
