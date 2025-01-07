@@ -10,7 +10,7 @@ var hurt = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
-	print("hallo")
+	print("neues skelett gespawnt")
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 	
