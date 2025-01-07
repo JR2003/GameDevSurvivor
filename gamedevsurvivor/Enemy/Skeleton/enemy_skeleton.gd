@@ -13,6 +13,10 @@ func _ready() -> void:
 	print("hallo")
 
 func _on_damage_hitbox_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("player"):
+		print("player ist im skelett")
+	
 	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player") and !area.is_in_group("enemies"):
 		health -= 10
 		hurt = true
@@ -24,9 +28,6 @@ func _on_damage_hitbox_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			die()
 	
-	if area.is_in_group("player"):
-		print("player ist im skelett")
-
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:
 		return

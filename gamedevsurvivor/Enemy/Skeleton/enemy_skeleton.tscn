@@ -357,7 +357,7 @@ radius = 32.0156
 
 [node name="enemySkeleton" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 4
 script = ExtResource("1_v0yd7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -389,7 +389,6 @@ shape = SubResource("CircleShape2D_bt0ir")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(15, -17)
 shape = SubResource("CircleShape2D_16f51")
-disabled = true
 
 [connection signal="body_entered" from="detection_range" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="detection_range" to="." method="_on_detection_range_body_exited"]
