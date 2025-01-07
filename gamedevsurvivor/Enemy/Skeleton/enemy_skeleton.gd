@@ -12,22 +12,15 @@ func _ready() -> void:
 	player = get_parent().get_node("Player")
 	print("neues skelett gespawnt")
 
-func _on_damage_hitbox_area_entered(area: Area2D) -> void:
-	
-	if area.is_in_group("player"):
-		print("player ist im skelett")
-	
-	if !area.is_in_group("skeleton_hitbox") and !area.is_in_group("player") and !area.is_in_group("enemies"):
-		health -= 10
-		hurt = true
-		print(area.get_groups())
-		$AnimatedSprite2D.play("hurt")
-		await $AnimatedSprite2D.animation_looped
-		
-		hurt = false
-		if health <= 0:
-			die()
-	
+
+
+func get_damage(amount: int):
+	health -= amount
+	$AnimatedSprite2D.play("hurt")
+	await $AnimatedSprite2D.animation_looped
+	if health <= 0:
+		die()
+
 func _physics_process(delta: float) -> void:
 	if !alive or hurt:
 		return

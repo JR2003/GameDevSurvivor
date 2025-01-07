@@ -11,7 +11,12 @@ var hurt = false
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 
-
+func get_damage(amount: int):
+	health -= amount
+	$AnimatedSprite2D.play("hurt")
+	await $AnimatedSprite2D.animation_looped
+	if health <= 0:
+		die()
 
 
 func _physics_process(delta: float) -> void:
@@ -53,15 +58,3 @@ func give_exp_to_player() -> void:
 		print("method nicht gefunden")
 	if player and player.has_method("gain_exp"):
 		player.gain_exp(exp_reward)
-
-func _on_damage_hitbox_area_entered(area: Area2D) -> void:
-	if !area.is_in_group("slime_hitbox") and !area.is_in_group("player") and !area.is_in_group("enemies"):
-		health -= 10
-		hurt = true
-		print(area.get_groups())
-		$AnimatedSprite2D.play("hurt")
-		await $AnimatedSprite2D.animation_looped
-		
-		hurt = false
-		if health <= 0:
-			die()

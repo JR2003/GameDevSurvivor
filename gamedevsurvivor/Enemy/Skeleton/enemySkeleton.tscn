@@ -1,7 +1,71 @@
 [gd_scene load_steps=52 format=3 uid="uid://5nb0n2q6pjpg"]
 
 [ext_resource type="Texture2D" uid="uid://ckqntslsur1ul" path="res://Skeleton/Skeleton enemy.png" id="1_du540"]
-[ext_resource type="Script" path="res://Enemy/Skeleton/enemy_skeleton.gd" id="1_v0yd7"]
+
+[sub_resource type="GDScript" id="GDScript_tyko5"]
+script/source = "extends CharacterBody2D
+
+var player = null
+var speed = 50
+var chase = true
+var health = 150
+var alive = true
+var exp_reward = 75
+var hurt = false
+
+func _ready() -> void:
+	player = get_parent().get_node(\"Player\")
+	print(\"hallo\")
+
+func _on_damage_hitbox_area_entered(area: Area2D) -> void:
+	if !area.is_in_group(\"skeleton_hitbox\") and !area.is_in_group(\"player\") and !area.is_in_group(\"enemies\"):
+		health -= 10
+		hurt = true
+		print(area.get_groups())
+		$AnimatedSprite2D.play(\"hurt\")
+		await $AnimatedSprite2D.animation_looped
+		
+		hurt = false
+		if health <= 0:
+			die()
+	
+	if area.is_in_group(\"player\"):
+		print(\"player ist im skelett\")
+
+func _physics_process(delta: float) -> void:
+	if !alive or hurt:
+		return
+	if chase:
+		var direction = (player.position - position).normalized()
+		
+		velocity = direction * speed
+		move_and_slide()
+		$AnimatedSprite2D.play(\"move\")
+		
+		if player.position.x < position.x:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
+	else:
+		$AnimatedSprite2D.play(\"idle\")
+
+func die():
+	
+	give_exp_to_player()
+	alive = false
+	$AnimatedSprite2D.play(\"death\")
+	await $AnimatedSprite2D.animation_looped
+	
+	queue_free()
+	
+func give_exp_to_player() -> void:
+	if player == null:
+		print(\"player nicht da\")
+	elif !player.has_method(\"gain_exp\"):
+		print(\"method nicht geunden\")
+	if player and player.has_method(\"gain_exp\"):
+		player.gain_exp(exp_reward)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mtq5"]
 atlas = ExtResource("1_du540")
@@ -358,7 +422,7 @@ radius = 32.0156
 [node name="EnemySkeleton" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_v0yd7")
+script = SubResource("GDScript_tyko5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(19.5, -13)
