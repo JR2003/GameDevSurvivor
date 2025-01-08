@@ -109,6 +109,7 @@ func update_exp_label() -> void:
 
 func update_hp_label() -> void:
 	hp_label.text = str(health) + " / " + str(3) 
+
 func get_damage(amount: int):
 	if damage_cd >= 1:
 		health -= amount
