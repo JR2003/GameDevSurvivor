@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://j2a4eadlyw8t"]
+
+[ext_resource type="Script" path="res://Menu/upgradeMenu/upgrade_menu.gd" id="1_8tlms"]
+
+[node name="UpgradeMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tlms")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.5
+offset_top = -141.5
+offset_right = 238.5
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="up_damage" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "upgrade damage"
+
+[node name="up_attackspeed" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "upgrade attackspeed"
+
+[node name="up_pierce" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "upgrade pierce"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/up_damage" to="." method="_on_up_damage_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/up_attackspeed" to="." method="_on_up_attackspeed_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/up_pierce" to="." method="_on_up_pierce_pressed"]

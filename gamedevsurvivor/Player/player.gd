@@ -14,7 +14,7 @@ extends CharacterBody2D
 @onready var up_attack_speed_button = $Camera2D/LevelUpMenu/AttackSpeed
 @onready var up_pierce_button = $Camera2D/LevelUpMenu/Pierce
 
-
+var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
@@ -87,7 +87,7 @@ func gain_exp(amount: int) -> void:
 	xp_bar.value = exp
 	
 	if exp >= exp_to_next_level:
-		level_up()
+		show_upgrade_menu()
 		update_exp_label()
 		
 	else:
@@ -98,9 +98,6 @@ func level_up() -> void:
 	exp = 0
 	exp_to_next_level *= 1.5
 	print("Level-Up! Neues Level: ", level)
-	get_tree().paused = true
-	upgrade_popup.show()
-	upgrade_popup.popup_centered()
 	# XP-Bar zurücksetzen oder aktualisieren
 	xp_bar.value = exp  # Setze die XP-Bar auf den neuen EXP-Wert
 
@@ -135,15 +132,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func resume_game() -> void:
 	upgrade_popup.hide()
 	get_tree().paused = false
-
-
-func _on_damage_pressed() -> void:
-	print("DAMAGE")
-
-
-func _on_attack_speed_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_pierce_pressed() -> void:
-	pass # Replace with function body.
+	
+func show_upgrade_menu():
+	var upgrade_menu = upgrademenuscene.instantiate()
+	add_child(upgrade_menu)
+	
+	get_tree().current_scene.add_child(upgrade_menu)
+	get_tree().paused = true
+	
