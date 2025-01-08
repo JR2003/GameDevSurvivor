@@ -9,11 +9,6 @@ extends CharacterBody2D
 
 @onready var bow_sound = $Weapon2/ShotSound
 
-@onready var upgrade_popup = $Camera2D/LevelUpMenu
-@onready var up_damage_button = $Camera2D/LevelUpMenu/Damage
-@onready var up_attack_speed_button = $Camera2D/LevelUpMenu/AttackSpeed
-@onready var up_pierce_button = $Camera2D/LevelUpMenu/Pierce
-
 var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
@@ -131,10 +126,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		getting_damage = true
 		
 
-	
-func resume_game() -> void:
-	upgrade_popup.hide()
-	get_tree().paused = false
 	
 func show_upgrade_menu():
 	var upgrade_menu = upgrademenuscene.instantiate()
