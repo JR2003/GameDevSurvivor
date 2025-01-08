@@ -10,13 +10,15 @@ extends Node2D  # Weapon2 sollte ein Node2D sein
 @onready var shot_sound = $ShotSound
 @onready var draw_sound = $drawSound
 var is_drawing_bow = false  # Zustand: Bogen wird gespannt
-var shoot_time = 0.0
-var damage = 20
+var shoot_time = 1.0
+var damage = 50
+var pierce = 1
 @export var shoot_cd = 0.0
 func shoot_arrow(direction: Vector2):
 	# Pfeil instanziieren
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.set_damage(damage)
+	arrow_instance.set_pierce(pierce)
 	get_tree().root.add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
 	
 	# Pfeilposition und Richtung setzen
@@ -27,9 +29,17 @@ func shoot_arrow(direction: Vector2):
 	arrow_instance.rotation = direction.angle() - deg_to_rad(70)
 	arrow_instance.direction = direction.normalized()
 
-func upgrade():
+func upgrade_damage():
 	damage += 10
 	print("upgraded damage:  ", damage)
+	
+func upgrade_attack_speed():
+	shoot_time -= 0.1
+
+func upgrade_pierce():
+	pierce += 1
+		
+	
 
 func _process(delta):
 	# Spielerposition als Rotationszent
@@ -38,8 +48,7 @@ func _process(delta):
 	
 	# Richtung zur Maus berechnen
 	var direction = (mouse_position - player_position).normalized()
-	if Input.is_action_just_pressed("upgrade"):
-		upgrade()
+	
 	# Position der Waffe relativ zum Spieler setzen
 	global_position = player_position + direction * weapon_distance
 

@@ -729,6 +729,37 @@ shape = SubResource("CircleShape2D_ojesv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="LevelUpMenu" type="Popup" parent="Camera2D"]
+auto_translate_mode = 1
+title = "Upgrade!"
+initial_position = 2
+size = Vector2i(300, 150)
+visible = true
+
+[node name="Damage" type="Button" parent="Camera2D/LevelUpMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Upgrade Damage"
+
+[node name="AttackSpeed" type="Button" parent="Camera2D/LevelUpMenu"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Upgrade Attack Speed"
+
+[node name="Pierce" type="Button" parent="Camera2D/LevelUpMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -15.5
+offset_right = 63.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upgrade Pierce"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.92773, 2.49963)
 sprite_frames = SubResource("SpriteFrames_8dcpb")
@@ -801,5 +832,8 @@ position = Vector2(0, 11.5)
 scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
 
+[connection signal="pressed" from="Camera2D/LevelUpMenu/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="Camera2D/LevelUpMenu/AttackSpeed" to="." method="_on_attack_speed_pressed"]
+[connection signal="pressed" from="Camera2D/LevelUpMenu/Pierce" to="." method="_on_pierce_pressed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -5,7 +5,7 @@ var player = null
 var speed = 50
 var health = 100
 var alive = true
-var exp_reward = 100  # EXP, die dieser Gegner gibt
+var exp_reward = 50  # EXP, die dieser Gegner gibt
 var hurt = false
 
 func _ready() -> void:

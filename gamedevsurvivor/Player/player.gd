@@ -3,9 +3,19 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D  # Sprite-Node
 @onready var xp_bar = $Control/ProgressBar# XP-Bar Referenz (Pfad anpassen)
 @export var is_shooting = false
+
 @onready var exp_label = $Control/ProgressBar/Exp
 @onready var hp_label = $Control/ProgressBar/Health
+
 @onready var bow_sound = $Weapon2/ShotSound
+
+@onready var upgrade_popup = $Camera2D/LevelUpMenu
+@onready var up_damage_button = $Camera2D/LevelUpMenu/Damage
+@onready var up_attack_speed_button = $Camera2D/LevelUpMenu/AttackSpeed
+@onready var up_pierce_button = $Camera2D/LevelUpMenu/Pierce
+
+
+
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
 var level = 1
@@ -79,18 +89,18 @@ func gain_exp(amount: int) -> void:
 	if exp >= exp_to_next_level:
 		level_up()
 		update_exp_label()
+		
 	else:
 		update_exp_label()
 
 func level_up() -> void:
-	
-	weapon.upgrade()
-	
 	level += 1
 	exp = 0
 	exp_to_next_level *= 1.5
 	print("Level-Up! Neues Level: ", level)
-
+	get_tree().paused = true
+	upgrade_popup.show()
+	upgrade_popup.popup_centered()
 	# XP-Bar zurücksetzen oder aktualisieren
 	xp_bar.value = exp  # Setze die XP-Bar auf den neuen EXP-Wert
 
@@ -114,11 +124,25 @@ func die():
 	
 	
 	
-
-
-
-
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
 		get_damage(1)
 		getting_damage = true
+		
+
+	
+func resume_game() -> void:
+	upgrade_popup.hide()
+	get_tree().paused = false
+
+
+func _on_damage_pressed() -> void:
+	print("DAMAGE")
+
+
+func _on_attack_speed_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_pierce_pressed() -> void:
+	pass # Replace with function body.
