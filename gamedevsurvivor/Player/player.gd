@@ -87,8 +87,11 @@ func gain_exp(amount: int) -> void:
 	xp_bar.value = exp
 	
 	if exp >= exp_to_next_level:
-		show_upgrade_menu()
+		#show_upgrade_menu()
 		update_exp_label()
+		level_up()
+		print(level)
+		show_upgrade_menu()
 		
 	else:
 		update_exp_label()
