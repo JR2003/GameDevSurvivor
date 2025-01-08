@@ -90,6 +90,7 @@ size_flags_vertical = 4
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8n5x3")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Play"
 
@@ -98,6 +99,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_8n5x3")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Exit Game
 "

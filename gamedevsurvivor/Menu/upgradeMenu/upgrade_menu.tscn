@@ -92,12 +92,14 @@ size_flags_vertical = 4
 [node name="damage" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_822oy")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Upgrade Damage"
 
 [node name="attackspeed" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_822oy")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Upgrade Attackspeed"
 
@@ -105,6 +107,7 @@ text = "Upgrade Attackspeed"
 layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_822oy")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Upgrade Pierce"
 
