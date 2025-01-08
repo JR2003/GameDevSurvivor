@@ -11,17 +11,20 @@ func close_upgrade_menu():
 	get_tree().paused = false
 	queue_free()
 
-func _on_up_damage_pressed() -> void:
+
+func _on_damage_pressed() -> void:
 	print("ich will damage")
 	weapon.upgrade_damage()
 	close_upgrade_menu()
 
-func _on_up_attackspeed_pressed() -> void:
+
+func _on_attackspeed_pressed() -> void:
 	print("ich will attackspeed")
 	weapon.upgrade_attack_speed()
 	close_upgrade_menu()
 
-func _on_up_pierce_pressed() -> void:
+
+func _on_pierce_pressed() -> void:
 	print("ich will pierce")
 	weapon.upgrade_pierce()
 	close_upgrade_menu()
