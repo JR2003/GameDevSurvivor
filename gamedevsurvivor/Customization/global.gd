@@ -32,6 +32,10 @@ var bodyColor = [
 	Color(0.55, 0.35, 0.20),  
 	Color(0.45, 0.28, 0.15),
 	Color(0.65, 0.45, 0.30),
+	Color(0.6, 1, 0.6),
+	Color(1, 1, 0.6),
+	Color(0.8, 0.6, 1),
+	Color(1, 0.8, 0.6),
 ]
 
 var hairColor = [
@@ -44,7 +48,11 @@ var hairColor = [
 	Color(0.8, 0.7, 1.0),
 	Color(0.7, 0.8, 1.0),
 	Color(0.2, 0.8, 0.4),
-	Color(1.0, 0.3, 0.3)
+	Color(1.0, 0.3, 0.3),
+	Color(0.6, 1, 0.6),
+	Color(1, 1, 0.6),
+	Color(0.8, 0.6, 1),
+	Color(1, 0.8, 0.6),
 ]
 
 var defaultColor = [
@@ -59,11 +67,11 @@ var defaultColor = [
 	Color(0, 0, 0),        # Schwarz
 ]
 
-var selectBody = ""
-var selectHair = ""
-var selectOutfit = ""
-var selectAccessory = ""
-var selectBodyColor = ""
-var selectHairColor = ""
-var selectOutfitColor = ""
-var selectAccessoryColor = ""
+var selectBody = "01"
+var selectHair = "none"
+var selectOutfit = "01"
+var selectAccessory = "none"
+var selectBodyColor = bodyColor[0] 
+var selectHairColor = hairColor[0] 
+var selectOutfitColor = defaultColor[0] 
+var selectAccessoryColor = defaultColor[0] 
