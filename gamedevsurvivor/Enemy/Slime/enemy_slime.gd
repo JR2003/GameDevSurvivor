@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var chase = true
 var player = null
+var weapon = null 
 var speed = 50
 var health = 100
 var alive = true
@@ -10,6 +11,7 @@ var hurt = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
+	weapon = get_parent().get_node("Player/Weapon2")
 	
 	
 
@@ -44,6 +46,9 @@ func get_damage(amount: int):
 	
 func die():
 	give_exp_to_player()
+	
+	weapon.increase_slime_count()
+	
 	alive = false
 	$AnimatedSprite2D.play("death")
 	await $AnimatedSprite2D.animation_looped

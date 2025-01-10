@@ -127,16 +127,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_k77qc")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_ddwrw")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_iho2b")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_mak8b")
 }],
 "loop": true,
@@ -196,6 +196,7 @@ position = Vector2(10.0938, -0.23)
 scale = Vector2(1.59375, 1.46)
 sprite_frames = SubResource("SpriteFrames_atsh6")
 animation = &"hurt"
+frame_progress = 0.144656
 offset = Vector2(-5, -12)
 
 [node name="detection_range" type="Area2D" parent="." groups=["slime", "slime_hitbox"]]

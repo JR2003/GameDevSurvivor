@@ -29,6 +29,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta):
+	xp_bar.value = float(exp) / float(exp_to_next_level) * 100
 	handle_input()
 	move_and_slide()
 	update_animation()
@@ -75,18 +76,20 @@ func play_walk_animation(direction: Vector2):
 		anim.play("walkDown")
 		
 func gain_exp(amount: int) -> void:
+	
 	exp += amount
-	print("EXP erhalten: ", amount, "| Gesamte EXP: ", exp)
+	
 
 	# XP-Bar aktualisieren
-	xp_bar.value = exp
+	
 	
 	if exp >= exp_to_next_level:
 		#show_upgrade_menu()
-		update_exp_label()
+		
 		level_up()
 		print(level)
 		show_upgrade_menu()
+		update_exp_label()
 		
 	else:
 		update_exp_label()
@@ -97,7 +100,7 @@ func level_up() -> void:
 	exp_to_next_level *= 1.5
 	print("Level-Up! Neues Level: ", level)
 	# XP-Bar zurücksetzen oder aktualisieren
-	xp_bar.value = exp  # Setze die XP-Bar auf den neuen EXP-Wert
+	  # Setze die XP-Bar auf den neuen EXP-Wert
 
 func update_exp_label() -> void:
 	exp_label.text = str(exp) + " / " + str(exp_to_next_level)  # Setze den Text im Label
@@ -126,7 +129,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		getting_damage = true
 		
 
-	
+
+
 func show_upgrade_menu():
 	var upgrade_menu = upgrademenuscene.instantiate()
 	add_child(upgrade_menu)

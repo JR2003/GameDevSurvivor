@@ -7,10 +7,10 @@ var health = 150
 var alive = true
 var exp_reward = 75
 var hurt = false
-
+var weapon = null
 func _ready() -> void:
 	player = get_parent().get_node("Player")
-	
+	weapon = get_parent().get_node("Player/Weapon2")
 
 # deleted double scenes
 
@@ -42,8 +42,10 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 
 func die():
-	
 	give_exp_to_player()
+	
+	weapon.increase_skeleton_count()
+	
 	alive = false
 	$AnimatedSprite2D.play("death")
 	await $AnimatedSprite2D.animation_looped
