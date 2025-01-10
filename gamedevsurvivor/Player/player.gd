@@ -2,15 +2,14 @@ extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D  # Sprite-Node
 @onready var xp_bar = $Control/ProgressBar# XP-Bar Referenz (Pfad anpassen)
-@export var is_shooting = false
-
 @onready var exp_label = $Control/ProgressBar/Exp
 @onready var hp_label = $Control/ProgressBar/Health
-
 @onready var bow_sound = $Weapon2/ShotSound
 
-var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
+@export var is_shooting = false
 
+
+var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
 var level = 1

@@ -777,7 +777,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = SubResource("PackedScene_k5exa")
 weapon_distance = -20
-shoot_cd = 0.5
+shoot_cd = 0.6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)

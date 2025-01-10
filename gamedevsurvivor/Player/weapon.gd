@@ -10,6 +10,7 @@ extends Node2D  # Weapon2 sollte ein Node2D sein
 @onready var shot_sound = $ShotSound
 @onready var draw_sound = $drawSound
 @export var shoot_cd = 0.0
+@export var max_as = 0.5
 
 var is_drawing_bow = false  # Zustand: Bogen wird gespannt
 var shoot_time = 1.0
@@ -114,7 +115,11 @@ func upgrade_damage():
 	print("upgraded damage:  ", damage)
 	
 func upgrade_attack_speed():
-	shoot_time -= 0.1
+	if shoot_time > max_as:
+		shoot_time -= 0.1
+	else:
+		
+		print("max attack speed reached")
 
 func upgrade_pierce():
 	pierce += 1

@@ -1,5 +1,6 @@
 extends Control
 
+@onready var buttonas = $UpgradeMenu/PanelContainer/VBoxContainer/attackspeed
 var player = null
 var weapon = null
 
@@ -11,6 +12,9 @@ func close_upgrade_menu():
 	get_tree().paused = false
 	queue_free()
 
+func _process(delta: float) -> void:
+	if weapon.shoot_time == 0.5:
+		buttonas.enabled = false
 
 func _on_damage_pressed() -> void:
 	print("ich will damage")
