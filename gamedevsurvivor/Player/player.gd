@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var bow_sound = $Weapon2/ShotSound
 
 var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
+var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
 
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
@@ -21,14 +22,18 @@ var health = 3
 var damage_cd = 1.0
 var getting_damage = false
 
+var paused = false
+
 func _ready() -> void:
 	weapon = get_node("Weapon2")
 	arrow = get_node("Arrow")
 	update_exp_label()
 	update_hp_label()
 	
+	
 
 func _physics_process(delta):
+	pause_game()
 	handle_input()
 	move_and_slide()
 	update_animation()
@@ -134,3 +139,10 @@ func show_upgrade_menu():
 	get_tree().current_scene.add_child(upgrade_menu)
 	get_tree().paused = true
 	
+func pause_game():
+	if Input.is_action_just_pressed("esc") and !paused:
+		print("ich will pause menü öffnen")
+		var pause_menu = pausemenuscene.instantiate()
+		add_child(pause_menu)
+		get_tree().current_scene.add_child(pause_menu)
+		get_tree().paused = true
