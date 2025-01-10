@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
-@onready var anim = $AnimatedSprite2D  # Sprite-Node
+@onready var body = $Skeleton/Body
+@onready var hair = $Skeleton/Hair
+@onready var outfit = $Skeleton/Outfit
+@onready var accessory = $Skeleton/Accessory
+@onready var animationPlayer = $AnimationPlayer
 @onready var xp_bar = $Control/ProgressBar# XP-Bar Referenz (Pfad anpassen)
 @export var is_shooting = false
 
@@ -19,14 +23,26 @@ var weapon = null
 var arrow = null
 var health = 3
 var damage_cd = 1.0
-var getting_damage = false
+var getting_damage = true
 
-func _ready() -> void:
-	weapon = get_node("Weapon2")
-	arrow = get_node("Arrow")
+func _ready():
+	initialize()
 	update_exp_label()
-	update_hp_label() 
+	update_hp_label()
+
+func initialize():
+	body.texture = Global.bodies[Global.selectBody]
+	body.modulate = Global.selectBodyColor
 	
+	outfit.texture = Global.outfits[Global.selectOutfit]
+	outfit.modulate = Global.selectOutfitColor
+	
+	hair.texture = Global.hairs[Global.selectHair]
+	hair.modulate = Global.selectHairColor
+	
+	accessory.texture = Global.accessories[Global.selectAccessory]
+	accessory.modulate = Global.selectAccessoryColor
+		
 
 func _physics_process(delta):
 	handle_input()
@@ -34,46 +50,44 @@ func _physics_process(delta):
 	update_animation()
 	if getting_damage:
 		damage_cd += delta
+
 func handle_input():
-	# Bewegungslogik
 	var axis = Vector2(
 		int(Input.is_action_pressed("moveRight")) - int(Input.is_action_pressed("moveLeft")),
 		int(Input.is_action_pressed("moveDown")) - int(Input.is_action_pressed("moveUp"))
 	)
+	
+	velocity = axis * 150  
 
-	if axis != Vector2.ZERO:
-		velocity = axis * 150  # Geschwindigkeit (anpassen nach Bedarf)
-	else:
-		velocity = Vector2.ZERO
 
-	# Richtung zur Maus aktualisieren
-	var mouse_direction = (get_global_mouse_position() - global_position).normalized()
-	last_direction = mouse_direction
-		
+	if not axis.is_equal_approx(Vector2.ZERO):
+		last_direction = axis
+
 func update_animation():
-	if health <= 0:
-		anim.play("die")
-		await anim.animation_looped
-		
-		
-		
-	if velocity == Vector2.ZERO:
-		anim.play("idle")
+	if velocity.is_equal_approx(Vector2.ZERO):
+		if last_direction.x < 0:
+			animationPlayer.play("idleLeft")
+		elif last_direction.x > 0:
+			animationPlayer.play("idleRight")
+		elif last_direction.y < 0:
+			animationPlayer.play("idleUp")
+		elif last_direction.y > 0:
+			animationPlayer.play("idleDown")
 	else:
 		play_walk_animation(last_direction)
 
 func play_walk_animation(direction: Vector2):
-	if direction.x < -0.5:
-		anim.flip_h = true
-		anim.play("walkRight")
-	elif direction.x > 0.5:
-		anim.flip_h = false
-		anim.play("walkRight")
-	elif direction.y < -0.5:
-		anim.play("walkUp")
-	elif direction.y > 0.5:
-		anim.play("walkDown")
-		
+	if direction.x != 0:
+		if direction.x < 0:
+			animationPlayer.play("walkLeft")
+		else:
+			animationPlayer.play("walkRight")
+	elif direction.y != 0:
+		if direction.y < 0:
+			animationPlayer.play("walkUp")
+		else:
+			animationPlayer.play("walkDown")
+			
 func gain_exp(amount: int) -> void:
 	exp += amount
 	print("EXP erhalten: ", amount, "| Gesamte EXP: ", exp)
@@ -114,7 +128,6 @@ func get_damage(amount: int):
 		die()
 	
 func die():
-	
 	update_animation()
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 	
@@ -133,4 +146,3 @@ func show_upgrade_menu():
 	
 	get_tree().current_scene.add_child(upgrade_menu)
 	get_tree().paused = true
-	

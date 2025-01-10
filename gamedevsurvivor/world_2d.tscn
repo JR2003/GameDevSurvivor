@@ -30,9 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://cms6rt4vp1n4n" path="res://assets/Tiny Swords (Update 010)/Deco/06.png" id="20_86mn2"]
 [ext_resource type="Texture2D" uid="uid://cpyvyy4tfc8c2" path="res://assets/Tiny Swords (Update 010)/Deco/14.png" id="20_ecs8h"]
 [ext_resource type="Texture2D" uid="uid://crljkcnocd3p" path="res://assets/Tiny Swords (Update 010)/Deco/04.png" id="23_qyuui"]
-[ext_resource type="PackedScene" uid="uid://ca8kwl2i7kgxr" path="res://Player/player.tscn" id="29_8gnmi"]
 [ext_resource type="PackedScene" uid="uid://d1x1c2hlvcbdn" path="res://Enemy/Slime/enemy_slime.tscn" id="30_f8r7v"]
 [ext_resource type="PackedScene" uid="uid://cjky3n4voupgl" path="res://Enemy/Skeleton/enemy_skeleton.tscn" id="32_hsbro"]
+[ext_resource type="PackedScene" uid="uid://fljx3pm6vd7k" path="res://Customization/Player.tscn" id="34_7hidr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ebhn"]
 texture = ExtResource("1_uxg8h")
@@ -6418,11 +6418,6 @@ tile_set = SubResource("TileSet_df6cf")
 tile_map_data = PackedByteArray("AACq//D/AAACAAcAAACq//H/AAACAAgAAACr/+3/AAADAAQAAACr/+7/AAADAAUAAACr/+//AAADAAYAAACr//D/AAADAAcAAACr//H/AAADAAgAAACr//L/AAADAAkAAACs/+v/AAAEAAIAAACs/+z/AAAEAAMAAACs/+3/AAAEAAQAAACs/+7/AAAEAAUAAACs/+//AAAEAAYAAACs//D/AAAEAAcAAACs//H/AAAEAAgAAACs//L/AAAEAAkAAACs//P/AAAEAAoAAACt/+n/AAAFAAAAAACt/+r/AAAFAAEAAACt/+v/AAAFAAIAAACt/+z/AAAFAAMAAACt/+3/AAAFAAQAAACt/+7/AAAFAAUAAACt/+//AAAFAAYAAACt//D/AAAFAAcAAACt//H/AAAFAAgAAACt//L/AAAFAAkAAACt//P/AAAFAAoAAACt//T/AAAFAAsAAACu/+n/AAAGAAAAAACu/+r/AAAGAAEAAACu/+v/AAAGAAIAAACu/+z/AAAGAAMAAACu/+3/AAAGAAQAAACu/+7/AAAGAAUAAACu/+//AAAGAAYAAACu//D/AAAGAAcAAACu//H/AAAGAAgAAACu//L/AAAGAAkAAACu//P/AAAGAAoAAACu//T/AAAGAAsAAACv/+v/AAAHAAIAAACv/+z/AAAHAAMAAACv/+3/AAAHAAQAAACv/+7/AAAHAAUAAACv/+//AAAHAAYAAACv//D/AAAHAAcAAACv//H/AAAHAAgAAACv//L/AAAHAAkAAACv//P/AAAHAAoAAACw/+3/AAAIAAQAAACw/+7/AAAIAAUAAACw/+//AAAIAAYAAACw//D/AAAIAAcAAACw//H/AAAIAAgAAACw//L/AAAIAAkAAACx/+//AAAJAAYAAACx//H/AAAJAAgAAAA=")
 tile_set = SubResource("TileSet_hg3o3")
 
-[node name="Player" parent="." instance=ExtResource("29_8gnmi")]
-position = Vector2(-1350, -144)
-scale = Vector2(0.735, 0.735)
-collision_layer = 2
-
 [node name="enemySlime" parent="." instance=ExtResource("30_f8r7v")]
 position = Vector2(-802, -259)
 
@@ -6431,3 +6426,6 @@ position = Vector2(-808, -460)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Player2" parent="." groups=["player"] instance=ExtResource("34_7hidr")]
+position = Vector2(-1374, -136)

@@ -15,6 +15,10 @@ run/main_scene="res://Menu/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Customization/global.gd"
+
 [global_group]
 
 player_projectiles=""
@@ -60,3 +64,7 @@ upgrade={
 "deadzone": 0.5,
 "events": []
 }
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

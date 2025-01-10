@@ -9,7 +9,7 @@ var exp_reward = 75
 var hurt = false
 
 func _ready() -> void:
-	player = get_parent().get_node("Player")
+	player = get_parent().get_node("Player2")
 	
 
 # deleted double scenes

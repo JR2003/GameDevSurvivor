@@ -4,7 +4,7 @@ var player = null
 var weapon = null
 
 func _ready() -> void:
-	player = get_parent().get_node("Player")
+	player = get_parent().get_node("Player2")
 	weapon = get_parent().get_node("Weapon2")
 	
 func close_upgrade_menu():

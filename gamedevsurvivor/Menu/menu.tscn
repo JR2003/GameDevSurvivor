@@ -94,6 +94,15 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Play"
 
+[node name="CharacterButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_8n5x3")
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Character"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -105,4 +114,5 @@ text = "Exit Game
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CharacterButton" to="." method="_on_character_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

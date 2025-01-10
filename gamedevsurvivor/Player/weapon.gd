@@ -4,7 +4,7 @@ extends Node2D  # Weapon2 sollte ein Node2D sein
 @onready var anim_sprite = $AnimatedSprite2D  # Verknüpft den AnimatedSprite2D in der Waffe
 @export var arrow_scene: PackedScene  # Verweis auf die Arrow.tscn
 @onready var weapon = $Weapon2  # oder ein relativer Pfad # Node, von dem der Pfeil gespawnt wird
-@export var weapon_distance = 20  # Abstand der Waffe vom Spielerzentrum
+@export var weapon_distance = 5  # Abstand der Waffe vom Spielerzentrum
 @export var shoot_offset: Vector2 = Vector2(75, 40)
 @onready var bow_timer = $Timer
 @onready var shot_sound = $ShotSound
