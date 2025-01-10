@@ -35,7 +35,7 @@ func shoot_arrow(direction: Vector2):
 	
 		arrow_instance.rotation = direction.angle() - deg_to_rad(70)
 		arrow_instance.direction = direction.normalized()
-	elif (slime_upgrade >= 10 and slime_upgrade <= 25):
+	elif (slime_upgrade >= 10 and slime_upgrade < 25):                             
 		var arrow_instance = arrow_scene.instantiate()
 		
 		var arrow_instance2 = arrow_scene.instantiate()
@@ -63,7 +63,7 @@ func shoot_arrow(direction: Vector2):
 		
 		arrow_instance2.rotation = arrow_instance2.direction.angle() 
 		arrow_instance2.direction = direction.rotated(spread_angle).normalized()
-	elif(slime_upgrade <= 25):
+	elif(slime_upgrade >= 25):
 	# Drei Pfeile instanziieren
 		var arrow_instance = arrow_scene.instantiate()
 		var arrow_instance2 = arrow_scene.instantiate()
