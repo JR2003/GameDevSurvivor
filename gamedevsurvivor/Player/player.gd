@@ -22,7 +22,6 @@ var health = 3
 var damage_cd = 1.0
 var getting_damage = false
 
-var paused = false
 
 func _ready() -> void:
 	weapon = get_node("Weapon2")
@@ -30,10 +29,10 @@ func _ready() -> void:
 	update_exp_label()
 	update_hp_label()
 	
-	
+func _process(delta: float) -> void:
+	pause_game()
 
 func _physics_process(delta):
-	pause_game()
 	handle_input()
 	move_and_slide()
 	update_animation()
@@ -140,7 +139,7 @@ func show_upgrade_menu():
 	get_tree().paused = true
 	
 func pause_game():
-	if Input.is_action_just_pressed("esc") and !paused:
+	if Input.is_action_just_pressed("esc"):
 		print("ich will pause menü öffnen")
 		var pause_menu = pausemenuscene.instantiate()
 		add_child(pause_menu)
