@@ -76,12 +76,7 @@ func play_walk_animation(direction: Vector2):
 		anim.play("walkDown")
 		
 func gain_exp(amount: int) -> void:
-	
 	exp += amount
-	
-
-	# XP-Bar aktualisieren
-	
 	
 	if exp >= exp_to_next_level:
 		#show_upgrade_menu()

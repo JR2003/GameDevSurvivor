@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=114 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ddjowo4dpu3by" path="res://New Piskel.png" id="9_odmlt"]
 [ext_resource type="AudioStream" uid="uid://d1on4frr3lskk" path="res://ArrowShot.mp3" id="12_ijwil"]
 [ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
-[ext_resource type="Texture2D" uid="uid://c4v1cck6r4rjg" path="res://assetsbow/bow_ready_animation.png" id="14_wnqqt"]
+[ext_resource type="Texture2D" uid="uid://bjlslfetl0mpc" path="res://assetsbow/bowanimnew.png" id="14_bpc5y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
 radius = 39.9172
@@ -700,29 +700,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0md8"]
-atlas = ExtResource("14_wnqqt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_o412s"]
+atlas = ExtResource("14_bpc5y")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_humop"]
-atlas = ExtResource("14_wnqqt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aickw"]
+atlas = ExtResource("14_bpc5y")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hycft"]
-atlas = ExtResource("14_wnqqt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkx8e"]
+atlas = ExtResource("14_bpc5y")
 region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80mx1"]
+atlas = ExtResource("14_bpc5y")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fv7g2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c0md8")
+"texture": SubResource("AtlasTexture_o412s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_humop")
+"texture": SubResource("AtlasTexture_aickw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hycft")
+"texture": SubResource("AtlasTexture_wkx8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80mx1")
 }],
 "loop": true,
 "name": &"ready",
@@ -793,7 +800,14 @@ stream = ExtResource("13_wrhpx")
 
 [node name="BowReady" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(104.5, -2.00005)
-scale = Vector2(2.53444, 2.33853)
+scale = Vector2(4.84558, 3.88478)
+sprite_frames = SubResource("SpriteFrames_fv7g2")
+animation = &"ready"
+frame_progress = 0.102981
+
+[node name="BowReady2" type="AnimatedSprite2D" parent="Weapon2"]
+position = Vector2(104.5, -2.00005)
+scale = Vector2(4.84558, 3.88478)
 sprite_frames = SubResource("SpriteFrames_fv7g2")
 animation = &"ready"
 frame_progress = 0.102981
