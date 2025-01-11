@@ -4,7 +4,7 @@ extends Node2D
 @export var enemy_slime_scene: PackedScene
 @export var enemy_skeleton_scene: PackedScene
 @export var enemy_wizard_scene: PackedScene
-
+@onready var music = $Music
 @onready var bridges = $TileMap/Bridges
 # Bereich, in dem die Gegner gespawnt werden
 @export var spawn_area: Rect2
@@ -13,13 +13,14 @@ extends Node2D
 var spawn_timer = 0.0  # Timer zur Verfolgung der Zeit seit Beginn des Spiels
 var print_timer = 0.0  # Timer zur Verfolgung der Zeit für den Print
 
+func _ready():
+	music.play()
+
 func _process(delta: float) -> void:
 	spawn_timer += delta  # Zeit seit Spielbeginn erhöhen
 	print_timer += delta  # Zeit seit dem letzten Print erhöhen
 
-	if print_timer >= 10.0:  # Alle 10 Sekunden
-		print("Verstrichene Zeit: ", spawn_timer)
-		print_timer = 0.0  # Timer zurücksetzen
+	
 
 func spawn_enemy():
 	# Zufällige Auswahl zwischen den drei Gegnertypen, basierend auf der vergangenen Zeit
@@ -48,6 +49,16 @@ func spawn_enemy():
 
 	# Einen neuen Gegner instanzieren
 	var enemy_instance = enemy_scene.instantiate()
+	if spawn_timer <60:
+		enemy_instance.increase_hp(1)
+	if spawn_timer > 60 and spawn_timer < 120:
+		enemy_instance.increase_hp(2)
+		print("HP increased by 2")
+	if spawn_timer > 120 and spawn_timer < 180:
+		enemy_instance.increase_hp(3)
+	if spawn_timer > 180 and spawn_timer < 240:
+		enemy_instance.increase_hp(4)
+		print("HP increased by 4")
 
 	# Zufällige Position innerhalb des Spawn-Bereichs berechnen
 	var spawn_position = Vector2(

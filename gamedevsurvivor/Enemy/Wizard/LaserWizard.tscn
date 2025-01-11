@@ -8,7 +8,7 @@ load_path = "res://.godot/imported/FireBall.png-c5959b1fcce2760fe271ba77fe91bf36
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
 size = Vector2(2.39003, 3.09619)
 
-[node name="Node2D2" type="Node2D" groups=["enemy_projectiles", "player_projectiles"]]
+[node name="Node2D3" type="Node2D" groups=["enemy_projectiles", "player_projectiles"]]
 position = Vector2(-282, -132)
 rotation = 2.90869
 scale = Vector2(20.1841, 18.1351)

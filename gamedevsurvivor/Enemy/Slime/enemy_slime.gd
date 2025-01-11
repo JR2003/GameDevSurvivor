@@ -45,7 +45,12 @@ func get_damage(amount: int):
 		if health <= 0:
 			die()
 	
-	
+func increase_hp(amount: float):
+	health *= amount
+	print(health)
+
+
+
 func die():
 	give_exp_to_player()
 	

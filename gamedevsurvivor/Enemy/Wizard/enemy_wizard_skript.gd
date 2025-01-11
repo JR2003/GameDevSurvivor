@@ -80,3 +80,7 @@ func shoot_fireball():
 	
 	fireball_instance.rotation = direction.angle() - deg_to_rad(70)
 	fireball_instance.direction = direction.normalized()
+	
+func increase_hp(amount: float):
+	health *= amount
+	

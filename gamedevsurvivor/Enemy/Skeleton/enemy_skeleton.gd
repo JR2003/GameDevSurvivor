@@ -62,3 +62,6 @@ func give_exp_to_player() -> void:
 	if player and player.has_method("gain_exp"):
 		player.gain_exp(exp_reward)
 		
+func increase_hp(amount: float):
+	health *= amount
+	
