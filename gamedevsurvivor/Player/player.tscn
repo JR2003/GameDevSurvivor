@@ -867,6 +867,7 @@ scale = Vector2(0.0934334, 0.0934334)
 texture = ExtResource("15_j7a1y")
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_left = -96.0
 offset_top = 243.5
 offset_right = 219.0
@@ -875,6 +876,7 @@ scale = Vector2(0.0934334, 0.0934334)
 texture = ExtResource("15_j7a1y")
 
 [node name="TextureRect3" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_left = -127.0
 offset_top = 244.0
 offset_right = 188.0

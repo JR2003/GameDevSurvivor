@@ -3,7 +3,7 @@ extends Node2D
 # Gegner-Szenen als PackedScene-Variablen
 @export var enemy_slime_scene: PackedScene
 @export var enemy_skeleton_scene: PackedScene
-
+@onready var bridges = $TileMap/Bridges
 # Bereich, in dem die Gegner gespawnt werden
 @export var spawn_area: Rect2
 @onready var block = $BlockArea/Block
@@ -39,4 +39,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		print(block.disabled)
 		block.disabled = false
+		bridges.collision_enabled = false
 		print(block.disabled)
