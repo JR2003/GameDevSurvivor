@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
 size = Vector2(2.48768, 1.55692)
 
-[node name="Node2D" type="Node2D" groups=["player_projectiles"]]
+[node name="Node2D2" type="Node2D" groups=["player_projectiles"]]
 position = Vector2(-282, -132)
 rotation = 2.90869
 scale = Vector2(20.1841, 18.1351)
