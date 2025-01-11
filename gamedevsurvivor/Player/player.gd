@@ -12,7 +12,7 @@ var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
 @export var slime_killer : PackedScene
 
 @export var is_shooting = false
-
+var excess_exp
 var last_direction = Vector2(0, 1)  # Standardmäßig nach unten
 var exp = 0
 var level = 1
@@ -88,7 +88,7 @@ func gain_exp(amount: int) -> void:
 	
 	if exp >= exp_to_next_level:
 		#show_upgrade_menu()
-		
+		excess_exp = exp - exp_to_next_level
 		level_up()
 		print(level)
 		show_upgrade_menu()
@@ -100,14 +100,14 @@ func gain_exp(amount: int) -> void:
 func level_up() -> void:
 	
 	level += 1
-	exp = 0
+	exp = excess_exp
 	exp_to_next_level *= 1.5
 	print("Level-Up! Neues Level: ", level)
 	# XP-Bar zurücksetzen oder aktualisieren
 	  # Setze die XP-Bar auf den neuen EXP-Wert
 
 func update_exp_label() -> void:
-	exp_label.text = str(exp) + " / " + str(exp_to_next_level)  # Setze den Text im Label
+	exp_label.text = "Level: " + str(level)  # Setze den Text im Label
 
 
 
@@ -154,6 +154,7 @@ func die():
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
+		
 		get_damage(1)
 		getting_damage = true
 		

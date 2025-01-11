@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+var boneUpgrade = false
 var chase = true
 var player = null
 var weapon = null
