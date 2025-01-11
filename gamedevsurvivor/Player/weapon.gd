@@ -116,7 +116,9 @@ func upgrade_damage():
 	
 func upgrade_attack_speed():
 	if shoot_time > max_as:
-		shoot_time -= 0.1
+		
+		shoot_cd -= 0.1
+		print("shoottime:", shoot_cd)
 	else:
 		
 		print("max attack speed reached")
@@ -182,4 +184,4 @@ func increase_skeleton_count():
 
 func increase_slime_count():
 	slime_upgrade += 1
-	print("slimes gekillt: ",slime_upgrade)
+	

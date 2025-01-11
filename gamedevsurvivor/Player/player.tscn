@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
 [ext_resource type="Texture2D" uid="uid://b835h34od5ktj" path="res://assetsbow/bowcolor.png" id="14_art7t"]
 [ext_resource type="Texture2D" uid="uid://ddsdmxpx54t71" path="res://assets/pngs/heart.png" id="15_j7a1y"]
-[ext_resource type="AudioStream" uid="uid://ehqeqkw5qtf0" path="res://assets/Sounds/Unbenanntes Video – Mit Clipchamp erstellt (17) (online-audio-converter.com).mp3" id="15_r5edi"]
+[ext_resource type="AudioStream" uid="uid://bybajchk160ys" path="res://assets/Sounds/damage (online-audio-converter.com).mp3" id="16_fgwqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
 radius = 39.9172
@@ -785,6 +785,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -28)
 scale = Vector2(2, 2)
+collision_mask = 65
 script = ExtResource("1_2s1sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -804,7 +805,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = SubResource("PackedScene_k5exa")
 weapon_distance = -20
-shoot_cd = 0.6
+shoot_cd = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
@@ -882,15 +883,15 @@ scale = Vector2(0.0934334, 0.0934334)
 texture = ExtResource("15_j7a1y")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]
-collision_mask = 6
+collision_mask = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["player"]]
 position = Vector2(-2.5, 12)
 scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
 
-[node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_r5edi")
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_fgwqk")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

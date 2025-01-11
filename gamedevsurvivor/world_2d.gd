@@ -6,7 +6,7 @@ extends Node2D
 
 # Bereich, in dem die Gegner gespawnt werden
 @export var spawn_area: Rect2
-
+@onready var block = $BlockArea/Block
 func _ready():
 	# Verbinde das Signal des Timers
 	$Timer.timeout.connect(spawn_enemy)
@@ -20,8 +20,8 @@ func spawn_enemy():
 
 	# Zufällige Position innerhalb des Spawn-Bereichs berechnen
 	var spawn_position = Vector2(
-		randf_range(-1000, 1000),
-		randf_range(0,500)
+		randf_range(-1500, 1000),
+		randf_range(-1000,1500)
 	)
 	
 	
@@ -29,3 +29,14 @@ func spawn_enemy():
 
 	# Gegner in die Szene hinzufügen
 	add_child(enemy_instance)
+
+
+
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		print(block.disabled)
+		block.disabled = false
+		print(block.disabled)

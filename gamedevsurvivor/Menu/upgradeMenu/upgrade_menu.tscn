@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://j2a4eadlyw8t"]
+[gd_scene load_steps=13 format=3 uid="uid://j2a4eadlyw8t"]
 
 [ext_resource type="Script" path="res://Menu/upgradeMenu/upgrade_menu.gd" id="1_8tlms"]
 [ext_resource type="Texture2D" uid="uid://c34yw1jquxuat" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Carved_9Slides.png" id="2_hodfk"]
@@ -60,6 +60,9 @@ Button/styles/hover = SubResource("StyleBoxTexture_nmvf8")
 Button/styles/normal = SubResource("StyleBoxTexture_0f31t")
 Button/styles/pressed = SubResource("StyleBoxTexture_yuymo")
 
+[sub_resource type="LabelSettings" id="LabelSettings_atj4l"]
+font_color = Color(0.592157, 0, 0.141176, 1)
+
 [node name="UpgradeMenu" type="Control"]
 process_mode = 3
 z_index = 1
@@ -84,6 +87,7 @@ offset_right = 354.0
 offset_bottom = 206.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.13612, 1.13612)
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
@@ -116,6 +120,11 @@ theme = SubResource("Theme_822oy")
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "Upgrade Pierce"
+
+[node name="MaxCd" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "Max Attack Speed reached!"
+label_settings = SubResource("LabelSettings_atj4l")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/damage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/attackspeed" to="." method="_on_attackspeed_pressed"]

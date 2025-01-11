@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var exp_label = $Control/ProgressBar/Exp
 @onready var hp_label = $Control/ProgressBar/Health
 @onready var bow_sound = $Weapon2/ShotSound
-@onready var levelupsound = $LevelUpSound
+@onready var damagesound = $DamageSound
 
 var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
@@ -108,6 +108,7 @@ func update_exp_label() -> void:
 
 
 func get_damage(amount: int):
+	damagesound.play()
 	if damage_cd >= 1:
 		health -= amount
 		damage_cd = 0
