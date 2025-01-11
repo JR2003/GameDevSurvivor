@@ -53,12 +53,12 @@ func spawn_enemy():
 		enemy_instance.increase_hp(1)
 	if spawn_timer > 60 and spawn_timer < 120:
 		enemy_instance.increase_hp(2)
-		print("HP increased by 2")
+		
 	if spawn_timer > 120 and spawn_timer < 180:
 		enemy_instance.increase_hp(3)
 	if spawn_timer > 180 and spawn_timer < 240:
 		enemy_instance.increase_hp(4)
-		print("HP increased by 4")
+		
 
 	# Zufällige Position innerhalb des Spawn-Bereichs berechnen
 	var spawn_position = Vector2(

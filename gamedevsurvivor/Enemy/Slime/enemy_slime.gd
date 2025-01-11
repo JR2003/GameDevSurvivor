@@ -47,7 +47,7 @@ func get_damage(amount: int):
 	
 func increase_hp(amount: float):
 	health *= amount
-	print(health)
+	
 
 
 

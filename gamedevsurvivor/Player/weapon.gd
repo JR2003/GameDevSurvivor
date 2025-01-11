@@ -19,7 +19,7 @@ var pierce = 1
 var slime_upgrade = 0
 var skeleton_upgrade = 0
 var readybow = true
-
+var bone = false
 var max_slimeupgrade = false
 var slimeupgrade1 = false
 
@@ -31,6 +31,7 @@ func shoot_arrow(direction: Vector2):
 		var arrow_instance = arrow_scene.instantiate()
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
+		arrow_instance.set_bone(bone)
 		get_tree().root.add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
 	
 	# Pfeilposition und Richtung setzen
@@ -48,10 +49,10 @@ func shoot_arrow(direction: Vector2):
 		
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
-		
+		arrow_instance.set_bone(bone)
 		arrow_instance2.set_damage(damage)
 		arrow_instance2.set_pierce(pierce)
-		
+		arrow_instance2.set_bone(bone)
 		get_tree().root.add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
 		get_tree().root.add_child(arrow_instance2)
 	# Pfeilposition und Richtung setzen
@@ -82,13 +83,13 @@ func shoot_arrow(direction: Vector2):
 	# Schaden und Durchschlagskraft für alle Pfeile setzen
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
-
+		arrow_instance.set_bone(bone)
 		arrow_instance2.set_damage(damage)
 		arrow_instance2.set_pierce(pierce)
-	
+		arrow_instance2.set_bone(bone)
 		arrow_instance3.set_damage(damage)
 		arrow_instance3.set_pierce(pierce)
-
+		arrow_instance3.set_bone(bone)
 	# Pfeile zur Spielwelt hinzufügen
 		get_tree().root.add_child(arrow_instance)
 		get_tree().root.add_child(arrow_instance2)
@@ -138,6 +139,11 @@ func upgrade_pierce():
 		
 	
 
+func upgradebone():
+	if skeleton_upgrade >= 5:
+		bone = true
+		print("Das bone upgrade bei der Weapon ist jetzt ",bone)
+
 func _process(delta):
 	# Spielerposition als Rotationszent
 	var player_position = player.global_position
@@ -159,7 +165,7 @@ func _process(delta):
 		if is_drawing_bow and shoot_time >= shoot_cd:
 			if readybow:
 				$BowReady.visible = true
-				print("ready")
+				
 				$BowReady.play("ready")
 				
 				readybow = false
@@ -191,6 +197,8 @@ func _process(delta):
 
 func increase_skeleton_count():
 	skeleton_upgrade += 1
+	print(skeleton_upgrade)
+	
 
 func increase_slime_count():
 	slime_upgrade += 1

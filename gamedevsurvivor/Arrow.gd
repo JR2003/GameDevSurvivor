@@ -10,6 +10,8 @@ var elapsed_time: float = 0.0
 var boneUpgrade = false
 
 	
+func boneda():
+	print(boneUpgrade)
 	
 func _physics_process(delta):
 	# Bewegung des Pfeils
@@ -31,7 +33,7 @@ func set_pierce(amount: int):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		
-		if boneUpgrade:
+		if true:
 			print("ich habe das boneupgrade")
 			var boneinstance = bonearea.instantiate()
 			boneinstance.global_position = body.global_position
