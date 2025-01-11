@@ -1,21 +1,23 @@
 extends Control
 
-@onready var buttonas = $UpgradeMenu/PanelContainer/VBoxContainer/attackspeed
+@onready var buttonas = $PanelContainer/VBoxContainer/attackspeed
+@onready var maxcdlabel = $PanelContainer/MaxCd
 var player = null
 var weapon = null
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 	weapon = get_parent().get_node("Weapon2")
+	maxcdlabel.visible = false
 	
 func close_upgrade_menu():
 	get_tree().paused = false
 	queue_free()
 
 func _process(delta: float) -> void:
-	if weapon.max_as_reached:
-		print("MENU max shoot time reached")
-		$PanelContainer/VBoxContainer/attackspeed.disabled = true
+	if weapon.shoot_cd== 0.5:
+		maxcdlabel.visible = true
+		buttonas.disabled = true
 
 func _on_damage_pressed() -> void:
 	print("ich will damage")

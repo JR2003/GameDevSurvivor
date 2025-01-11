@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=119 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://d1on4frr3lskk" path="res://ArrowShot.mp3" id="12_ijwil"]
 [ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
 [ext_resource type="Texture2D" uid="uid://b835h34od5ktj" path="res://assetsbow/bowcolor.png" id="14_art7t"]
+[ext_resource type="Texture2D" uid="uid://ddsdmxpx54t71" path="res://assets/pngs/heart.png" id="15_j7a1y"]
+[ext_resource type="AudioStream" uid="uid://bybajchk160ys" path="res://assets/Sounds/damage (online-audio-converter.com).mp3" id="16_fgwqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojesv"]
 radius = 39.9172
@@ -329,25 +331,25 @@ region = Rect2(448, 192, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8dcpb"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_32ffn")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_b07gs")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_tn4si")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_hbjik")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_2asr3")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_2b006")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_1tknk")
 }],
 "loop": true,
@@ -780,12 +782,10 @@ corner_radius_bottom_left = 12
 [sub_resource type="LabelSettings" id="LabelSettings_yxw2h"]
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_uh335"]
-font_color = Color(0, 0, 0, 1)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -28)
 scale = Vector2(2, 2)
+collision_mask = 65
 script = ExtResource("1_2s1sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -805,7 +805,7 @@ position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
 arrow_scene = SubResource("PackedScene_k5exa")
 weapon_distance = -20
-shoot_cd = 0.6
+shoot_cd = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon2"]
 position = Vector2(354.5, 139.5)
@@ -857,22 +857,43 @@ offset_right = 306.0
 text = "Exp:"
 label_settings = SubResource("LabelSettings_yxw2h")
 
-[node name="Health" type="Label" parent="Control/ProgressBar"]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = 4.5
-offset_top = -24.5
-offset_right = 44.5
-offset_bottom = -1.5
-text = "Health:"
-label_settings = SubResource("LabelSettings_uh335")
+offset_left = -159.0
+offset_top = 244.0
+offset_right = 156.0
+offset_bottom = 494.0
+scale = Vector2(0.0934334, 0.0934334)
+texture = ExtResource("15_j7a1y")
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 243.5
+offset_right = 219.0
+offset_bottom = 493.5
+scale = Vector2(0.0934334, 0.0934334)
+texture = ExtResource("15_j7a1y")
+
+[node name="TextureRect3" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -127.0
+offset_top = 244.0
+offset_right = 188.0
+offset_bottom = 494.0
+scale = Vector2(0.0934334, 0.0934334)
+texture = ExtResource("15_j7a1y")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]
-collision_mask = 6
+collision_mask = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["player"]]
-position = Vector2(0, 11.5)
+position = Vector2(-2.5, 12)
 scale = Vector2(0.455103, 0.457435)
 shape = SubResource("CircleShape2D_ojesv")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_fgwqk")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

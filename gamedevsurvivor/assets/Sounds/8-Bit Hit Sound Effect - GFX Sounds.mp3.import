@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4mghxcyeb0t8"
+path="res://.godot/imported/8-Bit Hit Sound Effect - GFX Sounds.mp3-f62200802ece02e9ee929e77946934e5.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/8-Bit Hit Sound Effect - GFX Sounds.mp3"
+dest_files=["res://.godot/imported/8-Bit Hit Sound Effect - GFX Sounds.mp3-f62200802ece02e9ee929e77946934e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

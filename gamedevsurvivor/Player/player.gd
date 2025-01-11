@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var exp_label = $Control/ProgressBar/Exp
 @onready var hp_label = $Control/ProgressBar/Health
 @onready var bow_sound = $Weapon2/ShotSound
-
+@onready var damagesound = $DamageSound
 
 var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
@@ -27,7 +27,7 @@ func _ready() -> void:
 	weapon = get_node("Weapon2")
 	arrow = get_node("Arrow")
 	update_exp_label()
-	update_hp_label()
+	
 	
 func _process(delta: float) -> void:
 	pause_game()
@@ -94,6 +94,7 @@ func gain_exp(amount: int) -> void:
 		update_exp_label()
 
 func level_up() -> void:
+	
 	level += 1
 	exp = 0
 	exp_to_next_level *= 1.5
@@ -104,20 +105,30 @@ func level_up() -> void:
 func update_exp_label() -> void:
 	exp_label.text = str(exp) + " / " + str(exp_to_next_level)  # Setze den Text im Label
 
-func update_hp_label() -> void:
-	hp_label.text = str(health) + " / " + str(3) 
+
 
 func get_damage(amount: int):
+	damagesound.play()
 	if damage_cd >= 1:
 		health -= amount
 		damage_cd = 0
-	update_hp_label()  # Setze den Text im Label
+	 # Setze den Text im Label
+		
+	if health == 2:
+		$Control/TextureRect2.visible = false
+	if health == 1:
+		$Control/TextureRect3.visible = false
+	if health == 0:
+		$Control/TextureRect.visible = false
 	if health <= 0:
 		die()
 	
 func die():
 	
-	update_animation()
+	
+	anim.play("die")
+	await anim.animation_looped
+	
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 	
 	
