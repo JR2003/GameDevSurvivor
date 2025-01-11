@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1lixir6v5kop"]
 
 [ext_resource type="Script" path="res://Enemy/Wizard/laser_wizard.gd" id="1_mgrxo"]
-[ext_resource type="Texture2D" uid="uid://bxl6vpctbijdd" path="res://assets/pngs/FireBall.png" id="2_c06cf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3rak"]
+load_path = "res://.godot/imported/FireBall.png-c5959b1fcce2760fe271ba77fe91bf36.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
 size = Vector2(2.48768, 1.55692)
@@ -16,7 +18,7 @@ script = ExtResource("1_mgrxo")
 position = Vector2(-0.407867, -2.14789)
 rotation = -1.57445
 scale = Vector2(0.152218, 0.113078)
-texture = ExtResource("2_c06cf")
+texture = SubResource("CompressedTexture2D_g3rak")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player_projectiles"]]
 collision_layer = 4
