@@ -19,6 +19,8 @@ var pierce = 1
 var slime_upgrade = 0
 var skeleton_upgrade = 0
 var readybow = true
+var max_as_reached = false
+var lucci_placeholder = 0
 
 func shoot_arrow(direction: Vector2):
 	# Pfeil instanziieren
@@ -117,9 +119,12 @@ func upgrade_damage():
 func upgrade_attack_speed():
 	if shoot_time > max_as:
 		shoot_time -= 0.1
+		lucci_placeholder = shoot_time
+		print(shoot_time)
 	else:
-		
 		print("max attack speed reached")
+		print(shoot_time)
+		max_as_reached = true
 
 func upgrade_pierce():
 	pierce += 1
@@ -156,8 +161,10 @@ func _process(delta):
 			is_drawing_bow = true
 			anim_sprite.speed_scale = 1  # Animationsgeschwindigkeit aktivieren
 			anim_sprite.play("default")
-			shoot_time = 0.0  # Starte die Spannanimation
-		shoot_time += delta
+			# lücci du bist so ein troll
+			# warum solltest du hier jedes mal die shoot time wieder auf 0 setzen
+			lucci_placeholder = 0.0  # Starte die Spannanimation
+		lucci_placeholder += delta
 		if anim_sprite.frame == anim_sprite.sprite_frames.get_frame_count("default") - 1:
 		
 			anim_sprite.speed_scale = 0  # Animation pausieren, wenn der Bogen vollständig gespannt ist

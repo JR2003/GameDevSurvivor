@@ -13,8 +13,9 @@ func close_upgrade_menu():
 	queue_free()
 
 func _process(delta: float) -> void:
-	if weapon.shoot_time == 0.5:
-		buttonas.enabled = false
+	if weapon.max_as_reached:
+		print("MENU max shoot time reached")
+		$PanelContainer/VBoxContainer/attackspeed.disabled = true
 
 func _on_damage_pressed() -> void:
 	print("ich will damage")
