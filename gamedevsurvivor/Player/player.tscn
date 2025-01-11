@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=118 format=3 uid="uid://ca8kwl2i7kgxr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
 [ext_resource type="Texture2D" uid="uid://lx1si0k5snv" path="res://Unarmed_Run_full (3).png" id="8_kbruq"]
-[ext_resource type="Script" path="res://Arrow.gd" id="8_xe7np"]
-[ext_resource type="Texture2D" uid="uid://ddjowo4dpu3by" path="res://New Piskel.png" id="9_odmlt"]
+[ext_resource type="PackedScene" uid="uid://dghc1ojjvx648" path="res://Player/Arrow.tscn" id="9_c8164"]
 [ext_resource type="AudioStream" uid="uid://d1on4frr3lskk" path="res://ArrowShot.mp3" id="12_ijwil"]
 [ext_resource type="AudioStream" uid="uid://bi234a43q88g1" path="res://DrawSound (online-audio-converter.com).mp3" id="13_wrhpx"]
 [ext_resource type="Texture2D" uid="uid://b835h34od5ktj" path="res://assetsbow/bowcolor.png" id="14_art7t"]
+[ext_resource type="Theme" uid="uid://c7o8vo0xeq5ju" path="res://Menu/menuTheme.tres" id="15_33hjb"]
 [ext_resource type="Texture2D" uid="uid://ddsdmxpx54t71" path="res://assets/pngs/heart.png" id="15_j7a1y"]
 [ext_resource type="AudioStream" uid="uid://bybajchk160ys" path="res://assets/Sounds/damage (online-audio-converter.com).mp3" id="16_fgwqk"]
 
@@ -622,22 +622,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
-size = Vector2(2.48768, 1.55692)
-
-[sub_resource type="PackedScene" id="PackedScene_k5exa"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(2, 0, 14, 13, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Node2D", "position", "rotation", "scale", "script", "Sprite2D", "texture", "Area2D", "collision_layer", "collision_mask", "CollisionShape2D", "shape", "Timer", "_on_area_2d_body_entered", "body_entered"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 4, 1, 0, 2, 1, 3, 2, 4, 3, 0, 0, 0, 5, 5, -1, 4, 1, 4, 2, 5, 3, 6, 6, 7, 0, 0, 0, 7, 7, -1, 2, 8, 8, 9, 8, 0, 2, 0, 10, 10, -1, 4, 1, 9, 2, 10, 3, 11, 11, 12, 0, 0, 0, 12, 12, -1, 0, 0),
-"variants": [Vector2(-282, -132), 2.90869, Vector2(20.1841, 18.1351), ExtResource("8_xe7np"), Vector2(-0.407867, -2.14789), -1.57445, Vector2(0.152218, 0.113078), ExtResource("9_odmlt"), 3, Vector2(-0.808187, -1.94186), 0.26236, Vector2(0.855287, 0.815269), SubResource("RectangleShape2D_ufiep")],
-"version": 3
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4pqw"]
 atlas = ExtResource("8_kbruq")
 region = Rect2(0, 0, 256, 256)
@@ -780,7 +764,10 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxw2h"]
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0, 0.00689098, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qahy1"]
+font_color = Color(0.245343, 0.646688, 0.277097, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -28)
@@ -802,7 +789,7 @@ speed_scale = 1.5
 [node name="Weapon2" type="Node2D" parent="."]
 position = Vector2(-178, 0)
 script = ExtResource("7_m6jkk")
-arrow_scene = SubResource("PackedScene_k5exa")
+arrow_scene = ExtResource("9_c8164")
 weapon_distance = -20
 shoot_cd = 1.0
 
@@ -844,6 +831,7 @@ offset_left = -161.5
 offset_top = 268.0
 offset_right = 157.5
 offset_bottom = 295.0
+theme = ExtResource("15_33hjb")
 theme_override_styles/background = SubResource("StyleBoxFlat_mdqvi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0spu5")
 show_percentage = false
@@ -855,6 +843,15 @@ offset_top = -23.0
 offset_right = 306.0
 text = "Exp:"
 label_settings = SubResource("LabelSettings_yxw2h")
+
+[node name="Level" type="Label" parent="Control/ProgressBar"]
+layout_mode = 0
+offset_left = -42.5
+offset_top = 2.5
+offset_right = -2.5
+offset_bottom = 25.5
+text = "Exp:"
+label_settings = SubResource("LabelSettings_qahy1")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0

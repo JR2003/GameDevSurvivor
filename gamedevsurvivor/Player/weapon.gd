@@ -19,11 +19,13 @@ var pierce = 1
 var slime_upgrade = 0
 var skeleton_upgrade = 0
 var readybow = true
+var skelUpgradeReady = false
 
 func shoot_arrow(direction: Vector2):
 	# Pfeil instanziieren
 	if(slime_upgrade < 10):
 		var arrow_instance = arrow_scene.instantiate()
+		arrow_instance.set_bone(skelUpgradeReady)
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
 		get_tree().root.add_child(arrow_instance)  # Füge den Pfeil zur Spielwelt hinzu
@@ -37,9 +39,9 @@ func shoot_arrow(direction: Vector2):
 		arrow_instance.direction = direction.normalized()
 	elif (slime_upgrade >= 10 and slime_upgrade < 25):                             
 		var arrow_instance = arrow_scene.instantiate()
-		
+		arrow_instance.set_bone(skelUpgradeReady)
 		var arrow_instance2 = arrow_scene.instantiate()
-		
+		arrow_instance2.set_bone(skelUpgradeReady)
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
 		
@@ -72,13 +74,15 @@ func shoot_arrow(direction: Vector2):
 	# Schaden und Durchschlagskraft für alle Pfeile setzen
 		arrow_instance.set_damage(damage)
 		arrow_instance.set_pierce(pierce)
-
+		arrow_instance.set_bone(skelUpgradeReady)
+		
 		arrow_instance2.set_damage(damage)
 		arrow_instance2.set_pierce(pierce)
-	
+		arrow_instance2.set_bone(skelUpgradeReady)
+		
 		arrow_instance3.set_damage(damage)
 		arrow_instance3.set_pierce(pierce)
-
+		arrow_instance3.set_bone(skelUpgradeReady)
 	# Pfeile zur Spielwelt hinzufügen
 		get_tree().root.add_child(arrow_instance)
 		get_tree().root.add_child(arrow_instance2)
@@ -181,7 +185,12 @@ func _process(delta):
 
 func increase_skeleton_count():
 	skeleton_upgrade += 1
+	if skeleton_upgrade >= 5:
+		skelUpgradeReady = true
 
 func increase_slime_count():
 	slime_upgrade += 1
+	
+	
+
 	

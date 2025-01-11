@@ -8,10 +8,12 @@ var health = 100
 var alive = true
 var exp_reward = 50  # EXP, die dieser Gegner gibt
 var hurt = false
+var boneUpgrade = false
 
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 	weapon = get_parent().get_node("Player/Weapon2")
+	
 	
 	
 
@@ -62,3 +64,4 @@ func give_exp_to_player() -> void:
 		print("method nicht geunden")
 	if player and player.has_method("gain_exp"):
 		player.gain_exp(exp_reward)
+		

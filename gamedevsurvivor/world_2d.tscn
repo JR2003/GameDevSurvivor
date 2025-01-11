@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://bwie4oasy5ukc"]
+[gd_scene load_steps=98 format=4 uid="uid://bwie4oasy5ukc"]
 
 [ext_resource type="Script" path="res://world_2d.gd" id="1_kntym"]
 [ext_resource type="Texture2D" uid="uid://cjkq3wtaxkupp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="1_uxg8h"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://d1x1c2hlvcbdn" path="res://Enemy/Slime/enemy_slime.tscn" id="30_f8r7v"]
 [ext_resource type="PackedScene" uid="uid://cjky3n4voupgl" path="res://Enemy/Skeleton/enemy_skeleton.tscn" id="32_hsbro"]
 [ext_resource type="PackedScene" uid="uid://dg2yhra8f7i0x" path="res://Enemy/Wizard/enemy_wizard.tscn" id="34_to6y2"]
+[ext_resource type="PackedScene" uid="uid://dghc1ojjvx648" path="res://Player/Arrow.tscn" id="35_njalo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ebhn"]
 texture = ExtResource("1_uxg8h")
@@ -6430,6 +6431,10 @@ tile_set = SubResource("TileSet_hg3o3")
 position = Vector2(-1350, -144)
 scale = Vector2(0.735, 0.735)
 collision_layer = 2
+
+[node name="Node2D" parent="Player" instance=ExtResource("35_njalo")]
+position = Vector2(2715.65, 971.428)
+scale = Vector2(27.4614, 24.6736)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

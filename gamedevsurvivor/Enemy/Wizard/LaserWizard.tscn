@@ -6,7 +6,7 @@
 load_path = "res://.godot/imported/FireBall.png-c5959b1fcce2760fe271ba77fe91bf36.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
-size = Vector2(2.48768, 1.55692)
+size = Vector2(2.39003, 3.09619)
 
 [node name="Node2D" type="Node2D" groups=["enemy_projectiles", "player_projectiles"]]
 position = Vector2(-282, -132)
@@ -25,9 +25,9 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player_projectiles"]]
-position = Vector2(-0.808187, -1.94186)
+position = Vector2(-1.05601, -1.86748)
 rotation = 0.26236
-scale = Vector2(0.855287, 0.815269)
+scale = Vector2(0.855287, 0.815268)
 shape = SubResource("RectangleShape2D_ufiep")
 
 [node name="Timer" type="Timer" parent="."]
