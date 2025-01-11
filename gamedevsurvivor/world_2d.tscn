@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://csiimswrgi3kp"]
+[gd_scene load_steps=97 format=4 uid="uid://bwie4oasy5ukc"]
 
 [ext_resource type="Script" path="res://world_2d.gd" id="1_kntym"]
 [ext_resource type="Texture2D" uid="uid://cjkq3wtaxkupp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="1_uxg8h"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://ca8kwl2i7kgxr" path="res://Player/player.tscn" id="29_8gnmi"]
 [ext_resource type="PackedScene" uid="uid://d1x1c2hlvcbdn" path="res://Enemy/Slime/enemy_slime.tscn" id="30_f8r7v"]
 [ext_resource type="PackedScene" uid="uid://cjky3n4voupgl" path="res://Enemy/Skeleton/enemy_skeleton.tscn" id="32_hsbro"]
+[ext_resource type="PackedScene" uid="uid://dg2yhra8f7i0x" path="res://Enemy/Wizard/enemy_wizard.tscn" id="34_to6y2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ebhn"]
 texture = ExtResource("1_uxg8h")
@@ -6366,6 +6367,7 @@ position = Vector2(2469, 1322)
 script = ExtResource("1_kntym")
 enemy_slime_scene = ExtResource("30_f8r7v")
 enemy_skeleton_scene = ExtResource("32_hsbro")
+enemy_wizard_scene = ExtResource("34_to6y2")
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
