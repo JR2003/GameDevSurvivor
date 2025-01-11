@@ -6,7 +6,8 @@ extends Node2D
 @onready var bridges = $TileMap/Bridges
 # Bereich, in dem die Gegner gespawnt werden
 @export var spawn_area: Rect2
-@onready var block = $BlockArea/Block
+@onready var static_body = $BlockArea
+
 func _ready():
 	# Verbinde das Signal des Timers
 	$Timer.timeout.connect(spawn_enemy)
@@ -31,13 +32,8 @@ func spawn_enemy():
 	add_child(enemy_instance)
 
 
-
-
-
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		print(block.disabled)
-		block.disabled = false
-		bridges.collision_enabled = false
-		print(block.disabled)
+		#print(block.disabled)
+		print("player left spawnarea")
+		static_body.collision_layer = 1
