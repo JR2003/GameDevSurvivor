@@ -39,7 +39,9 @@ func shoot_arrow(direction: Vector2):
 		arrow_instance.direction = direction.normalized()
 	elif (slime_upgrade >= 10 and slime_upgrade < 25):                             
 		var arrow_instance = arrow_scene.instantiate()
-		max_slimeupgrade = true
+		#max_slimeupgrade = false
+		#if slime_upgrade == 10:
+			#max_slimeupgrade = true
 		var arrow_instance2 = arrow_scene.instantiate()
 		
 		arrow_instance.set_damage(damage)
@@ -67,7 +69,7 @@ func shoot_arrow(direction: Vector2):
 		arrow_instance2.direction = direction.rotated(spread_angle).normalized()
 	elif(slime_upgrade >= 25):
 		# MAX SLIME KILLER ACHIEVEMENT SCREEN:
-		max_slimeupgrade = true
+		#max_slimeupgrade = true
 		
 	# Drei Pfeile instanziieren
 		var arrow_instance = arrow_scene.instantiate()
