@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1lixir6v5kop"]
+
+[ext_resource type="Script" path="res://Enemy/Wizard/laser_wizard.gd" id="1_mgrxo"]
+[ext_resource type="Texture2D" uid="uid://dwq2kjppu5n15" path="res://assets/pngs/FireBall.png" id="2_c06cf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufiep"]
+size = Vector2(2.48768, 1.55692)
+
+[node name="Node2D" type="Node2D" groups=["enemy_projectiles", "player_projectiles"]]
+position = Vector2(-282, -132)
+rotation = 2.90869
+scale = Vector2(20.1841, 18.1351)
+script = ExtResource("1_mgrxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.407867, -2.14789)
+rotation = -1.57445
+scale = Vector2(0.152218, 0.113078)
+texture = ExtResource("2_c06cf")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player_projectiles"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player_projectiles"]]
+position = Vector2(-0.808187, -1.94186)
+rotation = 0.26236
+scale = Vector2(0.855287, 0.815269)
+shape = SubResource("RectangleShape2D_ufiep")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
