@@ -107,6 +107,21 @@ func update_exp_label() -> void:
 
 
 
+func get_damage_by_projectile():
+	damagesound.play()
+	
+	health -= 1
+	
+	 # Setze den Text im Label
+		
+	if health == 2:
+		$Control/TextureRect2.visible = false
+	if health == 1:
+		$Control/TextureRect3.visible = false
+	if health == 0:
+		$Control/TextureRect.visible = false
+	if health <= 0:
+		die()
 func get_damage(amount: int):
 	damagesound.play()
 	if damage_cd >= 1:
