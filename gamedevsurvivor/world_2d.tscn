@@ -6439,12 +6439,11 @@ position = Vector2(-1010, -102)
 position = Vector2(-1, 7)
 shape = SubResource("RectangleShape2D_sx05j")
 
-[node name="BlockArea" type="Area2D" parent="."]
-collision_layer = 65
+[node name="BlockArea" type="StaticBody2D" parent="."]
+collision_layer = 0
 
 [node name="Block" type="CollisionShape2D" parent="BlockArea"]
 position = Vector2(-1178, -98)
 shape = SubResource("RectangleShape2D_eawyc")
 
 [connection signal="area_entered" from="StartArea" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="StartArea" to="." method="_on_area_2d_body_entered"]
