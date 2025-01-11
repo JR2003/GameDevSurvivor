@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://ca8kwl2i7kgxr"]
+[gd_scene load_steps=118 format=3 uid="uid://bkmyep3d7memc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]

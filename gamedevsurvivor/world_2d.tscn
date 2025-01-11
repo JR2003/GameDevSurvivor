@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cms6rt4vp1n4n" path="res://assets/Tiny Swords (Update 010)/Deco/06.png" id="20_86mn2"]
 [ext_resource type="Texture2D" uid="uid://cpyvyy4tfc8c2" path="res://assets/Tiny Swords (Update 010)/Deco/14.png" id="20_ecs8h"]
 [ext_resource type="Texture2D" uid="uid://crljkcnocd3p" path="res://assets/Tiny Swords (Update 010)/Deco/04.png" id="23_qyuui"]
-[ext_resource type="PackedScene" uid="uid://ca8kwl2i7kgxr" path="res://Player/player.tscn" id="29_8gnmi"]
+[ext_resource type="PackedScene" uid="uid://bkmyep3d7memc" path="res://Player/player.tscn" id="29_8gnmi"]
 [ext_resource type="PackedScene" uid="uid://d1x1c2hlvcbdn" path="res://Enemy/Slime/enemy_slime.tscn" id="30_f8r7v"]
 [ext_resource type="PackedScene" uid="uid://cjky3n4voupgl" path="res://Enemy/Skeleton/enemy_skeleton.tscn" id="32_hsbro"]
 [ext_resource type="PackedScene" uid="uid://dg2yhra8f7i0x" path="res://Enemy/Wizard/enemy_wizard.tscn" id="34_to6y2"]
