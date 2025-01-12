@@ -17,6 +17,8 @@ var print_timer = 0.0  # Timer zur Verfolgung der Zeit für den Print
 var deleteEnemy = false
 var enemies = []
 @export var enemy = null
+@onready var player = $Player
+
 func _ready():
 	music.play()
 
@@ -43,19 +45,19 @@ func spawn_enemy():
 	
 	
 	
-	if spawn_timer < 30.0:  # Innerhalb der ersten Minute
+	if spawn_timer < 5:  # Innerhalb der ersten Minute
 		if rand_value < 0.9:  # 90% Wahrscheinlichkeit für Slimes
 			enemy_scene = enemy_slime_scene
 		else:
 			enemy_scene = enemy_skeleton_scene  # 10% Wahrscheinlichkeit für Skelette
-	elif spawn_timer < 40.0:  # Nach einer Minute bis zwei Minuten
+	elif spawn_timer < 10:  # Nach einer Minute bis zwei Minuten
 		if rand_value < 0.7:  # 70% Wahrscheinlichkeit für Slimes
 			enemy_scene = enemy_slime_scene
 		elif rand_value < 0.9:  # 20% Wahrscheinlichkeit für Skelette
 			enemy_scene = enemy_skeleton_scene
 		else:
 			enemy_scene = enemy_wizard_scene  # 10% Wahrscheinlichkeit für Zauberer
-	elif spawn_timer < 45:  # Nach zwei Minuten
+	elif spawn_timer < 15:  # Nach zwei Minuten
 		if rand_value < 0.4:  # 40% Wahrscheinlichkeit für Slimes
 			enemy_scene = enemy_slime_scene
 		elif rand_value < 0.8:  # 40% Wahrscheinlichkeit für Skelette
@@ -70,6 +72,7 @@ func spawn_enemy():
 			bossthere = true
 			print("boss spawned")
 			enemy_scene = enemy_boss_scene
+			player.global_position = Vector2(1586,1141)
 			var spawn_position = Vector2(-500, -400)
 			var enemy_instance = enemy_scene.instantiate()
 			

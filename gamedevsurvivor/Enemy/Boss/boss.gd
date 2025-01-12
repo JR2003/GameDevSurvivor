@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var player = null
-var speed = 50
+var speed = 125
 var chase = true
-var health = 150
+var health = 2000
 var alive = true
 var exp_reward = 75
 var hurt = false
@@ -11,11 +11,19 @@ var weapon = null
 var boneUpgrade = false
 var spawned = false
 var isDamaging = false
+
+var damage: float = 0.0
+var damageTime: float = 2
+
+var isInsideAttack = false
 @onready var attackHitBox = $attack_hitbox
+@onready var attack_timer = $Timer
 func _ready() -> void:
-	player = get_parent().get_node("Player")
-	weapon = get_parent().get_node("Player/Weapon2")
 	
+	player = get_parent().get_node("Player")
+	player.updateBossBar(health)
+	weapon = get_parent().get_node("Player/Weapon2")
+	print("boss hp: ", health)
 	
 	
 
@@ -23,8 +31,10 @@ func _ready() -> void:
 
 func get_damage(amount: int):
 	if alive:
+		
 		hurt = true
 		health -= amount
+		print("boss hp: ", health)
 		$AnimatedSprite2D.play("hurt")
 		await $AnimatedSprite2D.animation_looped
 		hurt = false
@@ -32,6 +42,17 @@ func get_damage(amount: int):
 			die()
 
 func _physics_process(delta: float) -> void:
+	player.updateBossBar(health)
+	
+	if isInsideAttack and isDamaging:
+		print(damage)
+		if damage >= 0.5:
+			
+			attack()
+			
+			
+			
+		damage += delta
 	if !spawned:
 		$AnimatedSprite2D.play("spawn")
 		await $AnimatedSprite2D.animation_looped
@@ -74,16 +95,28 @@ func give_exp_to_player() -> void:
 func increase_hp(amount: float):
 	health *= amount
 	
-
-func _on_attack_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		isDamaging = true
-		print("attack")
+func attack():
+	
+	print("attack")
+	
+	
+	if isInsideAttack:
 		$AnimatedSprite2D.play("attack")
 		
 		await $AnimatedSprite2D.animation_looped
-		player.get_damage_by_projectile(2)
-		isDamaging = false
+		player.get_damage_by_boss(2)
+		attack_timer.start()
+func _on_attack_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		isInsideAttack = true
+		isDamaging = true
 		
-	
-	
+		
+		
+		
+
+
+func _on_attack_hitbox_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		isInsideAttack = false
+		isDamaging = false

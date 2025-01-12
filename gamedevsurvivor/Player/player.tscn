@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://bkmyep3d7memc"]
+[gd_scene load_steps=124 format=3 uid="uid://bkmyep3d7memc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://eoi4edm16jsc" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Idle/Unarmed_Idle_full.png" id="2_o3ld2"]
 [ext_resource type="PackedScene" uid="uid://b1wjqga8hw57s" path="res://Menu/achievement/slime_killermax.tscn" id="3_3vwoj"]
 [ext_resource type="Texture2D" uid="uid://oo82dv2h6d50" path="res://Unarmed_Idle_full (4).png" id="3_vd8gv"]
+[ext_resource type="PackedScene" uid="uid://7yb004olnbh6" path="res://Menu/menu.tscn" id="4_epc7k"]
 [ext_resource type="Texture2D" uid="uid://bk4wpdb0es4ia" path="res://Unarmed_Idle_full (5).png" id="4_hctfx"]
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
@@ -354,7 +355,7 @@ animations = [{
 "duration": 0.6,
 "texture": SubResource("AtlasTexture_1tknk")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -753,13 +754,14 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdqvi"]
+bg_color = Color(0.60933, 0.60933, 0.60933, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0spu5"]
-bg_color = Color(0.841127, 0.188478, 0.293056, 1)
+bg_color = Color(0.896479, 0.191454, 0.704886, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -769,7 +771,16 @@ corner_radius_bottom_left = 12
 font_color = Color(0, 0.00689098, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qahy1"]
-font_color = Color(0.245343, 0.646688, 0.277097, 1)
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er2hq"]
+bg_color = Color(0.617455, 0.617455, 0.617455, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38tyo"]
+bg_color = Color(0.988235, 0.305882, 0.129412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3hvoc"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -28)
@@ -777,6 +788,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
 slime_killer = ExtResource("2_8xhww")
 slime_killermax = ExtResource("3_3vwoj")
+menu = ExtResource("4_epc7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.455103, 0.457435)
@@ -845,7 +857,7 @@ layout_mode = 0
 offset_left = 247.0
 offset_top = -23.0
 offset_right = 306.0
-text = "Exp:"
+text = "Level:"
 label_settings = SubResource("LabelSettings_yxw2h")
 
 [node name="Level" type="Label" parent="Control/ProgressBar"]
@@ -884,6 +896,26 @@ offset_bottom = 494.0
 scale = Vector2(0.0934334, 0.0934334)
 texture = ExtResource("15_j7a1y")
 
+[node name="BossHP" type="ProgressBar" parent="Control"]
+offset_left = -257.0
+offset_top = -494.5
+offset_right = 62.0
+offset_bottom = -467.5
+scale = Vector2(1.67598, 1.57204)
+theme = ExtResource("15_33hjb")
+theme_override_styles/background = SubResource("StyleBoxFlat_er2hq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_38tyo")
+show_percentage = false
+
+[node name="BossName" type="Label" parent="Control/BossHP"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -27.5
+offset_right = 194.0
+offset_bottom = -4.5
+text = "Void Knight"
+label_settings = SubResource("LabelSettings_3hvoc")
+
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]
 collision_mask = 70
 
@@ -894,6 +926,9 @@ shape = SubResource("CircleShape2D_ojesv")
 
 [node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_fgwqk")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

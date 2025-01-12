@@ -6,7 +6,7 @@ var weapon = null
 var speed = 50
 var health = 100
 var alive = true
-var exp_reward = 50  # EXP, die dieser Gegner gibt
+var exp_reward = 40  # EXP, die dieser Gegner gibt
 var hurt = false
 var boneUpgrade = false
 

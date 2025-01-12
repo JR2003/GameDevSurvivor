@@ -304,67 +304,67 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_48jqd")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_i6yme")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_q87ic")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_27wlx")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_6ko5m")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_iivk5")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_orw8k")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_emqbg")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_rnad8")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_yhfb2")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_rgjlf")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_a3mpg")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_p6pbc")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_j35f5")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_48gd0")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_ptrui")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_3qool")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_patmf")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_l31dw")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_b6sto")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_h5yqe")
 }, {
 "duration": 1.0,
@@ -453,28 +453,28 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_n4ql1")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_yhaip")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_83s4w")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_r7xuj")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_kehjc")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_hqsqw")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_0f5nu")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_krmg4")
 }, {
 "duration": 1.0,
@@ -503,7 +503,7 @@ position = Vector2(19.5, -13)
 scale = Vector2(5.62492, 4.91496)
 sprite_frames = SubResource("SpriteFrames_el2fo")
 animation = &"attack"
-frame_progress = 0.625849
+frame_progress = 0.554838
 
 [node name="damage_hitbox" type="Area2D" parent="." groups=["enemies", "enemy_hitbox", "skeleton"]]
 position = Vector2(-53, 76)
@@ -516,7 +516,7 @@ position = Vector2(16.1111, -10.1522)
 scale = Vector2(1.84456, 1.48179)
 shape = SubResource("CapsuleShape2D_543ul")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(14, 3)
 scale = Vector2(4.443, 4.443)
 shape = SubResource("CircleShape2D_16f51")
@@ -531,5 +531,8 @@ collision_mask = 9
 position = Vector2(15, -16)
 shape = SubResource("CircleShape2D_bt0ir")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="damage_hitbox" to="." method="_on_damage_hitbox_area_entered"]
 [connection signal="area_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_area_entered"]
+[connection signal="area_exited" from="attack_hitbox" to="." method="_on_attack_hitbox_area_exited"]
