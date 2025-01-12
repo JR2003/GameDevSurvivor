@@ -20,6 +20,8 @@ func _physics_process(delta):
 	elapsed_time += delta
 	if elapsed_time >= lifetime:
 		queue_free()
+
+
 func set_bone(value: bool):
 	boneUpgrade = value
 
@@ -33,8 +35,8 @@ func set_pierce(amount: int):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		
-		if true:
-			print("ich habe das boneupgrade")
+		if boneUpgrade:
+			
 			var boneinstance = bonearea.instantiate()
 			boneinstance.global_position = body.global_position
 			get_tree().root.add_child(boneinstance)

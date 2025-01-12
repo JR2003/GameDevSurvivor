@@ -9,8 +9,6 @@ extends CharacterBody2D
 
 var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
-@export var slime_killer : PackedScene
-@export var slime_killermax : PackedScene
 
 @export var is_shooting = false
 var excess_exp
@@ -33,10 +31,6 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	pause_game()
-	if weapon.slimeupgrade1:
-		show_slime_killer()
-	if weapon.max_slimeupgrade:
-		show_slime_killermax()
 
 func _physics_process(delta):
 	xp_bar.value = float(exp) / float(exp_to_next_level) * 100
@@ -177,34 +171,3 @@ func pause_game():
 		add_child(pause_menu)
 		get_tree().current_scene.add_child(pause_menu)
 		get_tree().paused = true
-
-func show_slime_killer():
-	var sk_instance = slime_killer.instantiate()
-	add_child(sk_instance)
-	sk_instance.position = Vector2(0, -400)
-	
-	var timer = Timer.new()
-	timer.wait_time = 1.0
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
-	await timer.timeout
-	
-	if sk_instance:
-		sk_instance.queue_free()
-
-func show_slime_killermax():
-	var skm_instance = slime_killermax.instantiate()
-	add_child(skm_instance)
-	skm_instance.position = Vector2(0, -400)
-	
-	var timer = Timer.new()
-	timer.wait_time = 1.0
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
-	await timer.timeout
-	
-	
-	if skm_instance:
-		skm_instance.queue_free()

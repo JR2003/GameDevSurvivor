@@ -140,9 +140,9 @@ func upgrade_pierce():
 	
 
 func upgradebone():
-	if skeleton_upgrade >= 5:
+	if skeleton_upgrade >= 10:
 		bone = true
-		print("Das bone upgrade bei der Weapon ist jetzt ",bone)
+		
 
 func _process(delta):
 	# Spielerposition als Rotationszent
@@ -157,7 +157,7 @@ func _process(delta):
 
 	# Rotation zur Maus setzen
 	global_rotation = direction.angle()
-	
+	upgradebone()
 	
 	# Schusslogik
 	
@@ -197,7 +197,7 @@ func _process(delta):
 
 func increase_skeleton_count():
 	skeleton_upgrade += 1
-	print(skeleton_upgrade)
+	
 	
 
 func increase_slime_count():
