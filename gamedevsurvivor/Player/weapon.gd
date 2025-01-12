@@ -142,7 +142,8 @@ func upgrade_pierce():
 func upgradebone():
 	if skeleton_upgrade >= 10:
 		bone = true
-		up_skeleton = true
+		if skeleton_upgrade == 10:
+			up_skeleton = true
 		
 
 func _process(delta):
