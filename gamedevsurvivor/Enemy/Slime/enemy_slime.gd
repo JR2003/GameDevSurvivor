@@ -10,6 +10,7 @@ var exp_reward = 50  # EXP, die dieser Gegner gibt
 var hurt = false
 var boneUpgrade = false
 
+
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 	weapon = get_parent().get_node("Player/Weapon2")
@@ -50,6 +51,9 @@ func increase_hp(amount: float):
 	
 
 
+func deleteThis(value: bool):
+	if value:
+		queue_free()
 
 func die():
 	give_exp_to_player()
@@ -58,6 +62,7 @@ func die():
 	
 	alive = false
 	$AnimatedSprite2D.play("death")
+	
 	await $AnimatedSprite2D.animation_looped
 	
 	queue_free()

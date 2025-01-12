@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
+	
 	pause_game()
 	if weapon.slimeupgrade1:
 		show_slime_killer()
@@ -113,18 +114,21 @@ func update_exp_label() -> void:
 
 
 
-func get_damage_by_projectile():
+func get_damage_by_projectile(amount: int):
 	damagesound.play()
 	
-	health -= 1
+	health -= amount
 	
 	 # Setze den Text im Label
 		
 	if health == 2:
 		$Control/TextureRect2.visible = false
 	if health == 1:
+		$Control/TextureRect2.visible = false
 		$Control/TextureRect3.visible = false
 	if health == 0:
+		$Control/TextureRect3.visible = false
+		$Control/TextureRect2.visible = false
 		$Control/TextureRect.visible = false
 	if health <= 0:
 		die()
@@ -138,8 +142,11 @@ func get_damage(amount: int):
 	if health == 2:
 		$Control/TextureRect2.visible = false
 	if health == 1:
+		$Control/TextureRect2.visible = false
 		$Control/TextureRect3.visible = false
 	if health == 0:
+		$Control/TextureRect3.visible = false
+		$Control/TextureRect2.visible = false
 		$Control/TextureRect.visible = false
 	if health <= 0:
 		die()
@@ -156,9 +163,10 @@ func die():
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
-		
+		print("normal hit")
 		get_damage(1)
 		getting_damage = true
+	
 		
 
 

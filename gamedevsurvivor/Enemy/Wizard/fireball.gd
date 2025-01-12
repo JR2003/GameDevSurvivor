@@ -23,6 +23,6 @@ func set_pierce(amount: int):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		
-		body.get_damage_by_projectile()
+		body.get_damage_by_projectile(1)
 		
 		queue_free()

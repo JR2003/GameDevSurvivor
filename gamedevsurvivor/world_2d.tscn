@@ -1,10 +1,11 @@
-[gd_scene load_steps=99 format=4 uid="uid://bwie4oasy5ukc"]
+[gd_scene load_steps=100 format=4 uid="uid://bwie4oasy5ukc"]
 
 [ext_resource type="Script" path="res://world_2d.gd" id="1_kntym"]
 [ext_resource type="Texture2D" uid="uid://cjkq3wtaxkupp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="1_uxg8h"]
 [ext_resource type="Texture2D" uid="uid://m3p2gnbui2pp" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_hdhnq"]
 [ext_resource type="Texture2D" uid="uid://da07e8oakks1l" path="res://assets/Tiny Swords (Update 010)/Terrain/Bridge/Bridge_All.png" id="3_8kfc8"]
 [ext_resource type="Texture2D" uid="uid://cosb6vlejx8vv" path="res://assets/Tiny Swords (Update 010)/Terrain/Ground/Shadows.png" id="4_4sfjs"]
+[ext_resource type="PackedScene" uid="uid://bysllriianrhu" path="res://Enemy/Boss/boss.tscn" id="5_3r1so"]
 [ext_resource type="Texture2D" uid="uid://4mrl4kbls2t8" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="5_88840"]
 [ext_resource type="Texture2D" uid="uid://b66h1xi5swim6" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="6_21qrk"]
 [ext_resource type="Texture2D" uid="uid://btvoj5h3pe1oi" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Foam/Foam.png" id="6_a7eu8"]
@@ -6370,6 +6371,7 @@ script = ExtResource("1_kntym")
 enemy_slime_scene = ExtResource("30_f8r7v")
 enemy_skeleton_scene = ExtResource("32_hsbro")
 enemy_wizard_scene = ExtResource("34_to6y2")
+enemy_boss_scene = ExtResource("5_3r1so")
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2

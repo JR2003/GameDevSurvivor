@@ -54,10 +54,16 @@ func get_damage(amount: int):
 		if health <= 0:
 			die()
 
+
+func deleteThis(value: bool):
+	if value:
+		queue_free()
+
 func die():
 	give_exp_to_player()
 	alive = false
 	$AnimatedSprite2D.play("death")
+	
 	await $AnimatedSprite2D.animation_looped
 	queue_free()
 

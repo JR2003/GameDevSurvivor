@@ -23,6 +23,7 @@ slime=""
 skeleton=""
 player_hb=""
 enemy_hitbox=""
+boss_hit=""
 
 [input]
 
