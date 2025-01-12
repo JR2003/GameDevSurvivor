@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bybajchk160ys"
+path="res://.godot/imported/damage (online-audio-converter.com).mp3-51fba866144f003892fd4d4f86429929.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/damage (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/damage (online-audio-converter.com).mp3-51fba866144f003892fd4d4f86429929.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

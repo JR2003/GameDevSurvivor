@@ -1,18 +1,24 @@
 extends CharacterBody2D
 
 var player = null
-var speed = 50
+var speed = 75
 var chase = true
 var health = 150
 var alive = true
 var exp_reward = 75
 var hurt = false
+var weapon = null
+var boneUpgrade = false
 
 func _ready() -> void:
-	player = get_parent().get_node("Player2")
+	player = get_parent().get_node("Player")
+	weapon = get_parent().get_node("Player/Weapon2")
 	
 
 # deleted double scenes
+func deleteThis(value: bool):
+	if value:
+		queue_free()
 
 func get_damage(amount: int):
 	if alive:
@@ -42,10 +48,13 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 
 func die():
-	
 	give_exp_to_player()
+	
+	weapon.increase_skeleton_count()
+	
 	alive = false
 	$AnimatedSprite2D.play("death")
+	
 	await $AnimatedSprite2D.animation_looped
 	
 	queue_free()
@@ -57,3 +66,7 @@ func give_exp_to_player() -> void:
 		print("method nicht geunden")
 	if player and player.has_method("gain_exp"):
 		player.gain_exp(exp_reward)
+		
+func increase_hp(amount: float):
+	health *= amount
+	
