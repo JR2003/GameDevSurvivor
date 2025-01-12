@@ -61,6 +61,7 @@ Button/styles/normal = SubResource("StyleBoxTexture_bh43t")
 Button/styles/pressed = SubResource("StyleBoxTexture_e5g4j")
 
 [node name="LoseScreen" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
