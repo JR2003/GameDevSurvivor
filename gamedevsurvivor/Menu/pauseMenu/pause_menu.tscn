@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dvftq0ayix7j2" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="2_c1x6l"]
 [ext_resource type="Texture2D" uid="uid://dq4emg64gpy8s" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_kexu8"]
 
-[sub_resource type="FontVariation" id="FontVariation_3xmab"]
+[sub_resource type="FontVariation" id="FontVariation_na3m1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wd58"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vit8a"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -19,19 +19,19 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tvg7"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrgf3"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3par"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcjko"]
 texture = ExtResource("2_c1x6l")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bh43t"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mocpu"]
 texture = ExtResource("3_kexu8")
 texture_margin_left = 20.0
 texture_margin_top = 10.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5g4j"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_md0pg"]
 texture = ExtResource("2_c1x6l")
 
 [sub_resource type="Theme" id="Theme_tmjr3"]
@@ -53,12 +53,12 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
-Button/fonts/font = SubResource("FontVariation_3xmab")
-Button/styles/disabled = SubResource("StyleBoxFlat_4wd58")
-Button/styles/focus = SubResource("StyleBoxEmpty_4tvg7")
-Button/styles/hover = SubResource("StyleBoxTexture_c3par")
-Button/styles/normal = SubResource("StyleBoxTexture_bh43t")
-Button/styles/pressed = SubResource("StyleBoxTexture_e5g4j")
+Button/fonts/font = SubResource("FontVariation_na3m1")
+Button/styles/disabled = SubResource("StyleBoxFlat_vit8a")
+Button/styles/focus = SubResource("StyleBoxEmpty_rrgf3")
+Button/styles/hover = SubResource("StyleBoxTexture_fcjko")
+Button/styles/normal = SubResource("StyleBoxTexture_mocpu")
+Button/styles/pressed = SubResource("StyleBoxTexture_md0pg")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2

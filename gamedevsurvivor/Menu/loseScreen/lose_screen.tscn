@@ -1,0 +1,126 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdvejedjxljee"]
+
+[ext_resource type="Script" path="res://Menu/loseScreen/lose_screen.gd" id="1_ae3jm"]
+[ext_resource type="Texture2D" uid="uid://bgt2btf6x08nk" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Ribbons/Ribbon_Blue_Connection_Down.png" id="1_sw68k"]
+[ext_resource type="Texture2D" uid="uid://dvftq0ayix7j2" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="2_ymmnu"]
+[ext_resource type="Texture2D" uid="uid://dq4emg64gpy8s" path="res://Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_i276l"]
+
+[sub_resource type="FontVariation" id="FontVariation_3xmab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wd58"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tvg7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3par"]
+texture = ExtResource("2_ymmnu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bh43t"]
+texture = ExtResource("3_i276l")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5g4j"]
+texture = ExtResource("2_ymmnu")
+
+[sub_resource type="Theme" id="Theme_ves1m"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = SubResource("FontVariation_3xmab")
+Button/styles/disabled = SubResource("StyleBoxFlat_4wd58")
+Button/styles/focus = SubResource("StyleBoxEmpty_4tvg7")
+Button/styles/hover = SubResource("StyleBoxTexture_c3par")
+Button/styles/normal = SubResource("StyleBoxTexture_bh43t")
+Button/styles/pressed = SubResource("StyleBoxTexture_e5g4j")
+
+[node name="LoseScreen" type="CanvasLayer"]
+script = ExtResource("1_ae3jm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.5
+offset_top = -229.0
+offset_right = 264.5
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sw68k")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -174.0
+offset_right = 86.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "You Died"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -67.0
+offset_right = 82.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ves1m")
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_ves1m")
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Exit Game
+"
+
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
