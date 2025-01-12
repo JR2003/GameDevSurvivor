@@ -60,10 +60,19 @@ Button/styles/hover = SubResource("StyleBoxTexture_c3par")
 Button/styles/normal = SubResource("StyleBoxTexture_bh43t")
 Button/styles/pressed = SubResource("StyleBoxTexture_e5g4j")
 
-[node name="LoseScreen" type="CanvasLayer"]
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ae3jm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,6 +87,7 @@ grow_vertical = 2
 texture = ExtResource("1_sw68k")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -93,6 +103,7 @@ theme_override_font_sizes/font_size = 40
 text = "You Died"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
