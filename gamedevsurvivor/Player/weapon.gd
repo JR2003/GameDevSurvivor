@@ -202,8 +202,8 @@ func increase_skeleton_count():
 
 func increase_slime_count():
 	slime_upgrade += 1
-	if slime_upgrade == 3:
+	if slime_upgrade == 10:
 			slimeupgrade1 = true
-	if slime_upgrade == 5:
+	if slime_upgrade == 25:
 			max_slimeupgrade = true
 	
