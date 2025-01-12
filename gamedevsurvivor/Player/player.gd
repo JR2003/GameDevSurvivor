@@ -11,6 +11,7 @@ var upgrademenuscene = preload("res://Menu/upgradeMenu/upgrade_menu.tscn")
 var pausemenuscene = preload("res://Menu/pauseMenu/pause_menu.tscn")
 @export var slime_killer : PackedScene
 @export var slime_killermax : PackedScene
+@export var skeleton_killer : PackedScene
 
 @export var is_shooting = false
 var excess_exp
@@ -37,6 +38,8 @@ func _process(delta: float) -> void:
 		show_slime_killer()
 	if weapon.max_slimeupgrade:
 		show_slime_killermax()
+	if weapon.up_skeleton:
+		show_skeleton_killer()
 
 func _physics_process(delta):
 	xp_bar.value = float(exp) / float(exp_to_next_level) * 100
@@ -208,3 +211,18 @@ func show_slime_killermax():
 	
 	if skm_instance:
 		skm_instance.queue_free()
+
+func show_skeleton_killer():
+	var ssk_instance = skeleton_killer.instantiate()
+	add_child(ssk_instance)
+	ssk_instance.position = Vector2(0, -400)
+	
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	
+	if ssk_instance:
+		ssk_instance.queue_free()

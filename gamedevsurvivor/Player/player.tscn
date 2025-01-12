@@ -1,12 +1,13 @@
-[gd_scene load_steps=120 format=3 uid="uid://bkmyep3d7memc"]
+[gd_scene load_steps=121 format=3 uid="uid://bkmyep3d7memc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_2s1sr"]
 [ext_resource type="Texture2D" uid="uid://cy573ekcup1k3" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Death/Unarmed_Death_full.png" id="2_7p5xf"]
 [ext_resource type="PackedScene" uid="uid://dyoan5phxns82" path="res://Menu/achievement/slime_killer.tscn" id="2_8xhww"]
 [ext_resource type="Texture2D" uid="uid://d0a88flubus6o" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Run/Unarmed_Run_full.png" id="2_ep5m8"]
 [ext_resource type="Texture2D" uid="uid://eoi4edm16jsc" path="res://Free-Base 4-Direction-Male-Character-Pixel-Art/PNG/Unarmed_Idle/Unarmed_Idle_full.png" id="2_o3ld2"]
-[ext_resource type="PackedScene" uid="uid://b1wjqga8hw57s" path="res://Menu/achievement/slime_killermax.tscn" id="3_3vwoj"]
+[ext_resource type="PackedScene" uid="uid://b5e4rrb52rhyx" path="res://Menu/achievement/slime_killermax.tscn" id="3_3vwoj"]
 [ext_resource type="Texture2D" uid="uid://oo82dv2h6d50" path="res://Unarmed_Idle_full (4).png" id="3_vd8gv"]
+[ext_resource type="PackedScene" uid="uid://ct7liribg122k" path="res://Menu/achievement/skeleton_killer/skeleton_killer.tscn" id="4_0byec"]
 [ext_resource type="Texture2D" uid="uid://bk4wpdb0es4ia" path="res://Unarmed_Idle_full (5).png" id="4_hctfx"]
 [ext_resource type="Texture2D" uid="uid://dnmjna2mfrceo" path="res://Unarmed_Run_full.png" id="5_gybp7"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="7_m6jkk"]
@@ -777,6 +778,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_2s1sr")
 slime_killer = ExtResource("2_8xhww")
 slime_killermax = ExtResource("3_3vwoj")
+skeleton_killer = ExtResource("4_0byec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.455103, 0.457435)

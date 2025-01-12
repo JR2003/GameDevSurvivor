@@ -22,10 +22,12 @@ var readybow = true
 var bone = false
 var max_slimeupgrade = false
 var slimeupgrade1 = false
+var up_skeleton = false
 
 func shoot_arrow(direction: Vector2):
 	slimeupgrade1 = false
 	max_slimeupgrade = false
+	up_skeleton = false
 	# Pfeil instanziieren
 	if(slime_upgrade < 10):
 		var arrow_instance = arrow_scene.instantiate()
@@ -140,6 +142,7 @@ func upgrade_pierce():
 func upgradebone():
 	if skeleton_upgrade >= 10:
 		bone = true
+		up_skeleton = true
 		
 
 func _process(delta):
